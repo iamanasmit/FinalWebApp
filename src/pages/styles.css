@@ -1,0 +1,12 @@
+/* styles.css */
+.card {
+    opacity: 0;
+    transform: translateY(20px); /* Move down slightly */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .card.visible {
+    opacity: 1;
+    transform: translateY(0); /* Move back to original position */
+  }
+  
