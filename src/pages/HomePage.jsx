@@ -11,7 +11,7 @@ const HomePage = () => {
     <div
       className="d-flex flex-column justify-content-center align-items-center"
       style={{
-        background: "linear-gradient(135deg, #1c1b29, #0d0c22)",
+        background: "linear-gradient(135deg, #1f1c2c, #928dab)",
         color: "#ffffff",
         padding: "40px 20px",
         height: "100vh",
@@ -31,7 +31,7 @@ const HomePage = () => {
         style={{
           width: "150px",
           marginBottom: "30px",
-          marginTop: "250px", // Add margin to create space from the top
+          marginTop: "200px", // Reduced margin for better positioning
           filter: "brightness(0) invert(1)",
         }}
       />
@@ -44,9 +44,9 @@ const HomePage = () => {
         style={{
           color: "#ffb74d",
           marginBottom: "10px",
-          fontSize: "2.5rem",
+          fontSize: "3rem",
           fontWeight: "bold",
-          textShadow: "2px 4px 6px rgba(0, 0, 0, 0.4)", // Slight shadow for text
+          textShadow: "3px 5px 8px rgba(0, 0, 0, 0.5)", // More prominent shadow
         }}
       >
         Data Analysis and Visualization Team
@@ -75,10 +75,10 @@ const HomePage = () => {
           marginBottom: "40px",
           lineHeight: "1.6",
           textAlign: "center",
-          fontSize: "1.1rem",
+          fontSize: "1.2rem",
         }}
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat laborum, dolor necessitatibus excepturi vel nemo praesentium tempora ab esse iusto alias hic molestiae et, animi illo iste corporis soluta unde. Blanditiis iure corporis dolor enim cumque quisquam adipisci soluta officia.
+        Explore detailed statistics and trends across various IIT Bombay courses. From AI-ML to optimization, our team provides in-depth analysis for enhanced academic transparency.
       </motion.p>
 
       {/* Navigation Links */}
@@ -88,22 +88,15 @@ const HomePage = () => {
         transition={{ duration: 1.2, ease: "easeOut" }}
         className="p-4 rounded-3 shadow-lg"
         style={{
-          backgroundColor: "#272727",
-          boxShadow: `
-            0 8px 25px rgba(0, 0, 0, 0.4),      /* Dark shadow */
-            0 0 20px rgba(81, 175, 234, 0.5),   /* Blue glow */
-            0 0 15px rgba(255, 193, 7, 0.5)     /* Yellow glow */
-          `,
-          width: "60vw",
+          backgroundColor: "#2b2b2b",
+          boxShadow: `0 10px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(81, 175, 234, 0.5), 0 0 15px rgba(255, 193, 7, 0.5)`,
+          width: "70vw",
         }}
       >
         <ul className="list-unstyled w-100">
           {[
             { to: "/generic-overview", text: "Generic Overview Page" },
-            {
-              to: "/grading-related-projects",
-              text: "Grading related projects",
-            },
+            { to: "/grading-related-projects", text: "Grading related projects" },
             { to: "/ai-ml-courses", text: "ML/AI/Optimization" },
             { to: "/good-grading-courses", text: "Good Grading Courses" },
           ].map((item, index) => (
@@ -117,31 +110,19 @@ const HomePage = () => {
                   borderRadius: "12px",
                   backgroundColor: "#333",
                   transition: "all 0.3s ease",
-                  boxShadow: `
-                    0 4px 15px rgba(0, 0, 0, 0.2),   /* Default shadow */
-                    0 0 10px rgba(81, 175, 234, 0.3), /* Soft blue glow */
-                    0 0 10px rgba(255, 82, 82, 0.4)   /* Soft red glow */
-                  `,
+                  boxShadow: `0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(81, 175, 234, 0.3), 0 0 10px rgba(255, 82, 82, 0.4)`,
                 }}
                 onMouseOver={(e) => {
                   e.target.style.backgroundColor = "#29b6f6";
                   e.target.style.color = "#ffffff";
                   e.target.style.transform = "scale(1.05)";
-                  e.target.style.boxShadow = `
-                    0 8px 25px rgba(0, 0, 0, 0.3),    /* Default shadow */
-                    0 0 20px rgba(81, 175, 234, 0.6), /* Stronger blue glow */
-                    0 0 20px rgba(255, 82, 82, 0.5)   /* Stronger red glow */
-                  `;
+                  e.target.style.boxShadow = `0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(81, 175, 234, 0.6), 0 0 20px rgba(255, 82, 82, 0.5)`;
                 }}
                 onMouseOut={(e) => {
                   e.target.style.backgroundColor = "#333";
                   e.target.style.color = "#81d4fa";
                   e.target.style.transform = "scale(1)";
-                  e.target.style.boxShadow = `
-                    0 4px 15px rgba(0, 0, 0, 0.2),   /* Default shadow */
-                    0 0 10px rgba(81, 175, 234, 0.3), /* Soft blue glow */
-                    0 0 10px rgba(255, 82, 82, 0.4)   /* Soft red glow */
-                  `;
+                  e.target.style.boxShadow = `0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(81, 175, 234, 0.3), 0 0 10px rgba(255, 82, 82, 0.4)`;
                 }}
               >
                 {item.text}

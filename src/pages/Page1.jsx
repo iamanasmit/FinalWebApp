@@ -24,10 +24,13 @@ const Page1 = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+  const [graphSize, setGraphSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
   const dashboardStyles = {
-    backgroundColor: "#1c1b29",
+    backgroundColor: "#1e1c3a", // Dark background with a slight blue tint
     color: "#ffffff",
     padding: "20px",
     fontFamily: "Arial, sans-serif",
@@ -39,9 +42,9 @@ const Page1 = () => {
   };
 
   const titleStyles = {
-    fontSize: "24px",
+    fontSize: "28px",
     marginBottom: "20px",
-    color: "#ffffff",
+    color: "#ffcc00", // Bright accent color for title
     position: "fixed",
     top: "20px",
     left: "20px",
@@ -49,14 +52,17 @@ const Page1 = () => {
   };
 
   const cardStyles = {
-    backgroundColor: "#2b2a3a",
-    borderRadius: "10px",
+    backgroundColor: "#2c2b4f", // Darker background for cards
+    borderRadius: "12px",
     padding: "20px",
     flex: "1 1 22%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    minWidth: "200px",
+    minWidth: "250px",
+    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.5)", // Softer shadow for depth
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    cursor: "pointer",
   };
 
   const chartsSectionStyles = {
@@ -69,7 +75,7 @@ const Page1 = () => {
   };
 
   const chartContentStyles = {
-    backgroundColor: "#393850",
+    backgroundColor: "#3a384e",
     borderRadius: "8px",
     height: "60vh",
     display: "flex",
@@ -81,7 +87,8 @@ const Page1 = () => {
 
   const h2Styles = {
     textAlign: "center",
-    margin: "0",
+    color: "#ffcc00", // Accent color for headings
+    marginBottom: "10px",
   };
 
   // Dark theme layout for Plotly
@@ -93,34 +100,45 @@ const Page1 = () => {
       },
     },
     paper_bgcolor: "#1c1b29", // Background color of the entire chart
-    plot_bgcolor: "#2b2a3a", // Background color of the plot
+    plot_bgcolor: "#2c2b4f", // Background color of the plot
     font: {
       color: "#ffffff", // Default text color
     },
     xaxis: {
       color: "#ffffff", // Axis labels color
       tickcolor: "#ffffff",
-      gridcolor: "#444444", // Gridline color for a subtle contrast
+      gridcolor: "#444444", // Gridline color for subtle contrast
     },
     yaxis: {
       color: "#ffffff",
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
-    autosize: true,  // Enable autosize to allow Plotly to adapt to container
+    autosize: true, // Enable autosize to allow Plotly to adapt to container
   });
 
   const plotConfig = {
-    scrollZoom: false,       // Disables scrolling to zoom
-    displayModeBar: false,   // Hides the mode bar (optional)
-    editable: false,         // Disables any edits like dragging, zooming, etc.
+    scrollZoom: false, // Disables scrolling to zoom
+    displayModeBar: false, // Hides the mode bar (optional)
+    editable: false, // Disables any edits like dragging, zooming, etc.
   };
 
   return (
     <div style={dashboardStyles}>
-      <h1 style={titleStyles}>Test Page</h1>
+      <h1 style={titleStyles}>Course Statistics Dashboard</h1>
       <div style={chartsSectionStyles}>
-        <div style={cardStyles} data-aos="flip-up">
+        <div
+          style={cardStyles}
+          data-aos="flip-up"
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = "scale(1.05)";
+            e.currentTarget.style.boxShadow = "0 12px 30px rgba(0, 0, 0, 0.6)";
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+            e.currentTarget.style.boxShadow = "0 6px 20px rgba(0, 0, 0, 0.5)";
+          }}
+        >
           <h2 style={h2Styles}>Graph 1</h2>
           <div style={chartContentStyles}>
             <Plot
@@ -138,7 +156,7 @@ const Page1 = () => {
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
-              divId="plotly-graph"
+              divId="plotly-graph-1"
             />
           </div>
         </div>
@@ -159,7 +177,7 @@ const Page1 = () => {
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
-              divId="plotly-graph"
+              divId="plotly-graph-2"
             />
           </div>
         </div>
@@ -184,7 +202,7 @@ const Page1 = () => {
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
-              divId="plotly-graph"
+              divId="plotly-graph-3"
             />
           </div>
         </div>
@@ -204,7 +222,7 @@ const Page1 = () => {
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
-              divId="plotly-graph"
+              divId="plotly-graph-4"
             />
           </div>
         </div>
@@ -229,13 +247,13 @@ const Page1 = () => {
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
-              divId="plotly-graph"
+              divId="plotly-graph-5"
             />
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Page1;
