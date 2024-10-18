@@ -9,6 +9,7 @@ const Page1 = () => {
       delay: 200,
       duration: 1000,
       easing: "ease-in-out",
+      once: true, // Animation occurs only once when scrolling down
     });
 
     const handleResize = () => {
@@ -119,7 +120,7 @@ const Page1 = () => {
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Test Page</h1>
       <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
+        <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Graph 1</h2>
           <div style={chartContentStyles}>
             <Plot
@@ -141,7 +142,7 @@ const Page1 = () => {
             />
           </div>
         </div>
-        <div style={cardStyles}>
+        <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Graph 2</h2>
           <div style={chartContentStyles}>
             <Plot
@@ -164,7 +165,7 @@ const Page1 = () => {
         </div>
       </div>
       <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
+        <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Graph 3</h2>
           <div style={chartContentStyles}>
             <Plot
@@ -187,7 +188,7 @@ const Page1 = () => {
             />
           </div>
         </div>
-        <div style={cardStyles}>
+        <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Graph 4</h2>
           <div style={chartContentStyles}>
             <Plot
@@ -209,7 +210,7 @@ const Page1 = () => {
         </div>
       </div>
       <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
+        <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Graph 5</h2>
           <div style={chartContentStyles}>
             <Plot
@@ -237,4 +238,4 @@ const Page1 = () => {
   );
 }
 
-export default Page1
+export default Page1;

@@ -1,18 +1,12 @@
+// Import necessary libraries
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css/animate.min.css";
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSpring, animated } from "react-spring"; // For animations
+import { motion } from "framer-motion"; // For advanced animations
 
 const HomePage = () => {
-  const fadeIn = useSpring({ opacity: 1, from: { opacity: 0 }, delay: 300 });
-  const slideUp = useSpring({
-    transform: "translateY(0px)",
-    from: { transform: "translateY(50px)" },
-    delay: 500,
-  });
-
   return (
     <div
       className="d-flex flex-column justify-content-center align-items-center"
@@ -24,46 +18,58 @@ const HomePage = () => {
         width: "100vw",
         overflowX: "hidden",
         position: "relative",
+        paddingTop: "60px", // Add padding to the top
       }}
     >
-      {/* Logo */}
-      <animated.img
+      {/* Logo with Framer Motion */}
+      <motion.img
         src="src/pages/logo.png"
         alt="Data Analysis and Visualization Team Logo"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
         style={{
           width: "150px",
           marginBottom: "30px",
+          marginTop: "250px", // Add margin to create space from the top
           filter: "brightness(0) invert(1)",
-          ...fadeIn,
         }}
-        className="animate__animated animate__fadeInDown"
       />
 
       {/* Team and Project Description */}
-      <animated.h1
+      <motion.h1
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
         style={{
           color: "#ffb74d",
           marginBottom: "10px",
           fontSize: "2.5rem",
           fontWeight: "bold",
-          ...slideUp,
+          textShadow: "2px 4px 6px rgba(0, 0, 0, 0.4)", // Slight shadow for text
         }}
-        className="animate__animated animate__fadeInLeft"
       >
         Data Analysis and Visualization Team
-      </animated.h1>
-      <animated.h2
+      </motion.h1>
+
+      <motion.h2
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
         style={{
           color: "#ffa726",
           marginBottom: "20px",
           fontSize: "1.8rem",
           fontWeight: "500",
         }}
-        className="animate__animated animate__fadeInRight"
       >
         Grading Stats Report
-      </animated.h2>
-      <p
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
         style={{
           maxWidth: "700px",
           marginBottom: "40px",
@@ -71,24 +77,23 @@ const HomePage = () => {
           textAlign: "center",
           fontSize: "1.1rem",
         }}
-        className="animate__animated animate__fadeInUp"
       >
-        Welcome to the Grading Stats Report of IIT Bombay. Our team focuses on
-        analyzing and visualizing grading trends across various courses to
-        provide insightful data. Explore detailed reports by categories below.
-      </p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat laborum, dolor necessitatibus excepturi vel nemo praesentium tempora ab esse iusto alias hic molestiae et, animi illo iste corporis soluta unde. Blanditiis iure corporis dolor enim cumque quisquam adipisci soluta officia.
+      </motion.p>
 
       {/* Navigation Links */}
-      {/* Navigation Links */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
         className="p-4 rounded-3 shadow-lg"
         style={{
           backgroundColor: "#272727",
           boxShadow: `
-      0 8px 25px rgba(0, 0, 0, 0.4),       /* Dark shadow */
-      0 0 20px rgba(81, 175, 234, 0.5),    /* Blue glow */
-      0 0 15px rgba(255, 193, 7, 0.5)      /* Yellow glow */
-    `,
+            0 8px 25px rgba(0, 0, 0, 0.4),      /* Dark shadow */
+            0 0 20px rgba(81, 175, 234, 0.5),   /* Blue glow */
+            0 0 15px rgba(255, 193, 7, 0.5)     /* Yellow glow */
+          `,
           width: "60vw",
         }}
       >
@@ -113,30 +118,30 @@ const HomePage = () => {
                   backgroundColor: "#333",
                   transition: "all 0.3s ease",
                   boxShadow: `
-              0 4px 15px rgba(0, 0, 0, 0.2),  /* Default shadow */
-              0 0 10px rgba(81, 175, 234, 0.3), /* Soft blue glow */
-              0 0 10px rgba(255, 82, 82, 0.4)  /* Soft red glow */
-            `,
+                    0 4px 15px rgba(0, 0, 0, 0.2),   /* Default shadow */
+                    0 0 10px rgba(81, 175, 234, 0.3), /* Soft blue glow */
+                    0 0 10px rgba(255, 82, 82, 0.4)   /* Soft red glow */
+                  `,
                 }}
                 onMouseOver={(e) => {
                   e.target.style.backgroundColor = "#29b6f6";
                   e.target.style.color = "#ffffff";
                   e.target.style.transform = "scale(1.05)";
                   e.target.style.boxShadow = `
-              0 4px 15px rgba(0, 0, 0, 0.2),  /* Default shadow */
-              0 0 20px rgba(81, 175, 234, 0.6), /* Stronger blue glow */
-              0 0 20px rgba(255, 82, 82, 0.5)  /* Stronger red glow */
-            `;
+                    0 8px 25px rgba(0, 0, 0, 0.3),    /* Default shadow */
+                    0 0 20px rgba(81, 175, 234, 0.6), /* Stronger blue glow */
+                    0 0 20px rgba(255, 82, 82, 0.5)   /* Stronger red glow */
+                  `;
                 }}
                 onMouseOut={(e) => {
                   e.target.style.backgroundColor = "#333";
                   e.target.style.color = "#81d4fa";
                   e.target.style.transform = "scale(1)";
                   e.target.style.boxShadow = `
-              0 4px 15px rgba(0, 0, 0, 0.2),  /* Default shadow */
-              0 0 10px rgba(81, 175, 234, 0.3), /* Soft blue glow */
-              0 0 10px rgba(255, 82, 82, 0.4)  /* Soft red glow */
-            `;
+                    0 4px 15px rgba(0, 0, 0, 0.2),   /* Default shadow */
+                    0 0 10px rgba(81, 175, 234, 0.3), /* Soft blue glow */
+                    0 0 10px rgba(255, 82, 82, 0.4)   /* Soft red glow */
+                  `;
                 }}
               >
                 {item.text}
@@ -144,12 +149,23 @@ const HomePage = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </motion.div>
 
       {/* Social Media Links */}
       <footer className="mt-5 text-center" style={{ color: "#bdbdbd" }}>
-        <p className="animate__animated animate__fadeIn">Connect with us:</p>
-        <ul className="list-unstyled d-flex justify-content-center gap-3">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.3, ease: "easeOut" }}
+        >
+          Connect with us:
+        </motion.p>
+        <motion.ul
+          className="list-unstyled d-flex justify-content-center gap-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.4, ease: "easeOut" }}
+        >
           {[
             { href: "https://www.facebook.com/yourteam", label: "Facebook" },
             { href: "https://www.twitter.com/yourteam", label: "Twitter" },
@@ -173,7 +189,7 @@ const HomePage = () => {
               </a>
             </li>
           ))}
-        </ul>
+        </motion.ul>
       </footer>
     </div>
   );
