@@ -26,8 +26,8 @@ const Page3 = () => {
   const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   const dashboardStyles = {
-    backgroundColor: "#1c1b29",
-    color: "#ffffff",
+    background: "linear-gradient(135deg, #1f1c2c, #928dab)",
+        color: "#ffffff",
     padding: "20px",
     fontFamily: "Arial, sans-serif",
     height: "100vh",

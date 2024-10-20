@@ -4,6 +4,12 @@ import "aos/dist/aos.css";
 import Plot from "react-plotly.js";
 
 const Page2 = () => {
+  const [data, setData] = useState([]);
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
+  const [selectedYear, setSelectedYear] = useState("2020");
+
   useEffect(() => {
     AOS.init({
       delay: 200,
@@ -26,7 +32,7 @@ const Page2 = () => {
   const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   const dashboardStyles = {
-    backgroundColor: "#1c1b29",
+    background: "linear-gradient(135deg, #1f1c2c, #928dab)",
     color: "#ffffff",
     padding: "20px",
     fontFamily: "Arial, sans-serif",
@@ -46,6 +52,54 @@ const Page2 = () => {
     left: "20px",
     zIndex: 1000,
   };
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("src\\pages\\seminar_records_2020.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("src\\pages\\records_2021.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData1(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data for 2021:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("src\\pages\\records_2022.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData2(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data for 2022:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("src\\pages\\records_2023.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData3(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data for 2023:", error);
+      });
+  }, []);
 
   const cardStyles = {
     backgroundColor: "#2b2a3a",
@@ -115,6 +169,25 @@ const Page2 = () => {
     editable: false,         // Disables any edits like dragging, zooming, etc.
   };
 
+  const getGraph5Data = () => {
+    switch (selectedYear) {
+      case "2020":
+        return data;
+      case "2021":
+        return data1;
+      case "2022":
+        return data2;
+      case "2023":
+        return data3;
+      default:
+        return [];
+    }
+  };
+
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
+  };
+
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Test Page</h1>
@@ -125,19 +198,17 @@ const Page2 = () => {
             <Plot
               data={[
                 {
-                  x: [1, 2, 3, 4],
-                  y: [10, 15, 13, 17],
+                  x: data.map(d => d['Course Code']),
+                  y: data.map(d => d['Average Grade']),
                   type: "scatter",
-                  mode: "lines+markers",
-                  marker: { color: "red" },
-                },
+                  mode: "markers",
+                  marker: { color: "rgb(255, 99, 132)" }
+                }
               ]}
-              layout={darkThemeLayout("Line Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout("Average Grades by Course Code for 2020")}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
             />
           </div>
         </div>
@@ -147,18 +218,17 @@ const Page2 = () => {
             <Plot
               data={[
                 {
-                  x: ["Apples", "Bananas", "Cherries"],
-                  y: [10, 20, 30],
-                  type: "bar",
-                  marker: { color: "#00aaff" },
-                },
+                  x: data1.map(d => d['Course Code']),
+                  y: data1.map(d => d['Average Grade']),
+                  type: "scatter",
+                  mode: "markers",
+                  marker: { color: "rgb(255, 99, 132)" }
+                }
               ]}
-              layout={darkThemeLayout("Bar Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout("Average Grades by Course Code for 2021")}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
             />
           </div>
         </div>
@@ -170,20 +240,17 @@ const Page2 = () => {
             <Plot
               data={[
                 {
-                  labels: ["Red", "Blue", "Green"],
-                  values: [10, 20, 30],
-                  type: "pie",
-                  marker: {
-                    colors: ["#ff6347", "#1e90ff", "#32cd32"],
-                  },
-                },
+                  x: data2.map(d => d['Course Code']),
+                  y: data2.map(d => d['Average Grade']),
+                  type: "scatter",
+                  mode: "markers",
+                  marker: { color: "rgb(255, 99, 132)" }
+                }
               ]}
-              layout={darkThemeLayout("Pie Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout("Average Grades by Course Code for 2022")}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
             />
           </div>
         </div>
@@ -193,17 +260,17 @@ const Page2 = () => {
             <Plot
               data={[
                 {
-                  z: [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
-                  type: "heatmap",
-                  colorscale: "Viridis",
-                },
+                  x: data3.map(d => d['Course Code']),
+                  y: data3.map(d => d['Average Grade']),
+                  type: "scatter",
+                  mode: "markers",
+                  marker: { color: "rgb(255, 99, 132)" }
+                }
               ]}
-              layout={darkThemeLayout("Heatmap")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout("Average Grades by Course Code for 2023")}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
             />
           </div>
         </div>
@@ -211,20 +278,40 @@ const Page2 = () => {
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
           <h2 style={h2Styles}>Graph 5</h2>
-          <div style={chartContentStyles}>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
+            {/* Dropdown for Year Selection */}
+            <select 
+              value={selectedYear}
+              onChange={handleYearChange}
+              style={{
+                marginBottom: "10px",
+                marginTop: "10px",
+                padding: "10px",
+                borderRadius: "5px",
+                border: "none",
+                backgroundColor: "#2b2a3a",
+                color: "#ffffff",
+                fontSize: "16px",
+              }}
+            >
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+
             <Plot
               data={[
                 {
-                  type: "scatter3d",
+                  x: getGraph5Data().map(d => d['Course Code']),
+                  y: getGraph5Data().map(d => d['Average Grade']),
+                  type: "scatter",
                   mode: "markers",
-                  x: [1, 2, 3, 4],
-                  y: [5, 6, 7, 8],
-                  z: [9, 10, 11, 12],
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout("3D Scatter Plot")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout(`Average Grades by Course Code for ${selectedYear}`)}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
@@ -237,4 +324,4 @@ const Page2 = () => {
   );
 }
 
-export default Page2
+export default Page2;

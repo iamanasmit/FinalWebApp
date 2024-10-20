@@ -9,7 +9,7 @@ const Page1 = () => {
       delay: 200,
       duration: 1000,
       easing: "ease-in-out",
-      once: true, // Animation occurs only once when scrolling down
+      once: true,
     });
 
     const handleResize = () => {
@@ -19,7 +19,7 @@ const Page1 = () => {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Initial call to set sizes
+    handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -30,7 +30,7 @@ const Page1 = () => {
   });
 
   const dashboardStyles = {
-    backgroundColor: "#1e1c3a", // Dark background with a slight blue tint
+    background: "linear-gradient(135deg, #1f1c2c, #928dab)",
     color: "#ffffff",
     padding: "20px",
     fontFamily: "Arial, sans-serif",
@@ -42,9 +42,9 @@ const Page1 = () => {
   };
 
   const titleStyles = {
-    fontSize: "28px",
+    fontSize: "24px",
     marginBottom: "20px",
-    color: "#ffcc00", // Bright accent color for title
+    color: "#ffffff",
     position: "fixed",
     top: "20px",
     left: "20px",
@@ -52,17 +52,15 @@ const Page1 = () => {
   };
 
   const cardStyles = {
-    backgroundColor: "#2c2b4f", // Darker background for cards
-    borderRadius: "12px",
+    backgroundColor: "#2b2a3a",
+    borderRadius: "10px",
     padding: "20px",
     flex: "1 1 22%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    minWidth: "250px",
-    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.5)", // Softer shadow for depth
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-    cursor: "pointer",
+    minWidth: "200px",
+    position: "relative",
   };
 
   const chartsSectionStyles = {
@@ -75,7 +73,7 @@ const Page1 = () => {
   };
 
   const chartContentStyles = {
-    backgroundColor: "#3a384e",
+    backgroundColor: "#393850",
     borderRadius: "8px",
     height: "60vh",
     display: "flex",
@@ -85,10 +83,24 @@ const Page1 = () => {
     flex: 1,
   };
 
+  const insightSectionStyles = {
+    backgroundColor: "#2c2b4f",
+    padding: "15px",
+    borderRadius: "8px",
+    marginTop: "10px",
+    textAlign: "center",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+  };
+
+  const insightTextStyles = {
+    color: "#ffcc00",
+    fontSize: "16px",
+    margin: 0,
+  };
+
   const h2Styles = {
     textAlign: "center",
-    color: "#ffcc00", // Accent color for headings
-    marginBottom: "10px",
+    margin: "0",
   };
 
   // Dark theme layout for Plotly
@@ -100,14 +112,14 @@ const Page1 = () => {
       },
     },
     paper_bgcolor: "#1c1b29", // Background color of the entire chart
-    plot_bgcolor: "#2c2b4f", // Background color of the plot
+    plot_bgcolor: "#2b2a3a", // Background color of the plot
     font: {
       color: "#ffffff", // Default text color
     },
     xaxis: {
       color: "#ffffff", // Axis labels color
       tickcolor: "#ffffff",
-      gridcolor: "#444444", // Gridline color for subtle contrast
+      gridcolor: "#444444", // Gridline color for a subtle contrast
     },
     yaxis: {
       color: "#ffffff",
@@ -123,22 +135,19 @@ const Page1 = () => {
     editable: false, // Disables any edits like dragging, zooming, etc.
   };
 
+  const graphInsights = {
+    graph1: "This line chart shows the trend of data over time. The peaks indicate key moments of increase.",
+    graph2: "This bar chart shows categorical data. The highest value is for Bananas, showing strong sales.",
+    graph3: "This pie chart highlights how the values are divided across the categories.",
+    graph4: "This heatmap shows the intensity of the data across a matrix. Darker areas represent higher values.",
+    graph5: "This 3D scatter plot showcases the relationship across three dimensions of data.",
+  };
+
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Course Statistics Dashboard</h1>
       <div style={chartsSectionStyles}>
-        <div
-          style={cardStyles}
-          data-aos="flip-up"
-          onMouseOver={(e) => {
-            e.currentTarget.style.transform = "scale(1.05)";
-            e.currentTarget.style.boxShadow = "0 12px 30px rgba(0, 0, 0, 0.6)";
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.transform = "scale(1)";
-            e.currentTarget.style.boxShadow = "0 6px 20px rgba(0, 0, 0, 0.5)";
-          }}
-        >
+        <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Graph 1</h2>
           <div style={chartContentStyles}>
             <Plot
@@ -159,7 +168,12 @@ const Page1 = () => {
               divId="plotly-graph-1"
             />
           </div>
+          {/* Insight Section */}
+          <div style={insightSectionStyles}>
+            <p style={insightTextStyles}>{graphInsights.graph1}</p>
+          </div>
         </div>
+
         <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Graph 2</h2>
           <div style={chartContentStyles}>
@@ -180,8 +194,13 @@ const Page1 = () => {
               divId="plotly-graph-2"
             />
           </div>
+          {/* Insight Section */}
+          <div style={insightSectionStyles}>
+            <p style={insightTextStyles}>{graphInsights.graph2}</p>
+          </div>
         </div>
       </div>
+
       <div style={chartsSectionStyles}>
         <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Graph 3</h2>
@@ -205,7 +224,12 @@ const Page1 = () => {
               divId="plotly-graph-3"
             />
           </div>
+          {/* Insight Section */}
+          <div style={insightSectionStyles}>
+            <p style={insightTextStyles}>{graphInsights.graph3}</p>
+          </div>
         </div>
+
         <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Graph 4</h2>
           <div style={chartContentStyles}>
@@ -225,30 +249,9 @@ const Page1 = () => {
               divId="plotly-graph-4"
             />
           </div>
-        </div>
-      </div>
-      <div style={chartsSectionStyles}>
-        <div style={cardStyles} data-aos="flip-up">
-          <h2 style={h2Styles}>Graph 5</h2>
-          <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  type: "scatter3d",
-                  mode: "markers",
-                  x: [1, 2, 3, 4],
-                  y: [5, 6, 7, 8],
-                  z: [9, 10, 11, 12],
-                  marker: { color: "rgb(23, 190, 207)", size: 12 },
-                },
-              ]}
-              layout={darkThemeLayout("3D Scatter Plot")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph-5"
-            />
+          {/* Insight Section */}
+          <div style={insightSectionStyles}>
+            <p style={insightTextStyles}>{graphInsights.graph4}</p>
           </div>
         </div>
       </div>
