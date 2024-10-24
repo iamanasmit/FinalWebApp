@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   const dashboardStyles = {
     background: "linear-gradient(135deg, #1f1c2c, #928dab)",
-        color: "#ffffff",
+    color: "#ffffff",
     padding: "20px",
     fontFamily: "Arial, sans-serif",
     height: "100vh",
@@ -35,6 +35,79 @@ const Dashboard = () => {
     boxSizing: "border-box",
     overflowX: "hidden",
     position: "relative",
+  };
+
+  const [data, setData] = useState([]);
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
+  const [selectedYear, setSelectedYear] = useState("2020");
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("src\\pages\\data\\Percentage_APs_2020.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("src\\pages\\data\\Percentage_APs_2021.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData1(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data for 2021:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("src\\pages\\data\\Percentage_APs_2022.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData2(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data for 2022:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("src\\pages\\data\\Percentage_APs_2023.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData3(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data for 2023:", error);
+      });
+  }, []);
+
+  const getGraphDepts = () => {
+    switch (selectedYear) {
+      case "2020":
+        return data;
+      case "2021":
+        return data1;
+      case "2022":
+        return data2;
+      case "2023":
+        return data3;
+      default:
+        return [];
+    }
+  };
+
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
   };
 
   const titleStyles = {
@@ -120,41 +193,41 @@ const Dashboard = () => {
       <h1 style={titleStyles}>Test Page</h1>
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 1</h2>
-          <div style={chartContentStyles}>
+          <h2 style={h2Styles}>Percentage APs given by Department</h2>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
+            {/* Dropdown for Year Selection */}
+            <select 
+              value={selectedYear}
+              onChange={handleYearChange}
+              style={{
+                marginBottom: "10px",
+                marginTop: "10px",
+                padding: "10px",
+                borderRadius: "5px",
+                border: "none",
+                backgroundColor: "#2b2a3a",
+                color: "#ffffff",
+                fontSize: "16px",
+              }}
+            >
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+
             <Plot
               data={[
                 {
-                  x: [1, 2, 3, 4],
-                  y: [10, 15, 13, 17],
-                  type: "scatter",
-                  mode: "lines+markers",
-                  marker: { color: "red" },
-                },
-              ]}
-              layout={darkThemeLayout("Line Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
-            />
-          </div>
-        </div>
-        <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 2</h2>
-          <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  x: ["Apples", "Bananas", "Cherries"],
-                  y: [10, 20, 30],
+                  x: getGraphDepts().map(d => d['X']),
+                  y: getGraphDepts().map(d => d['Y']),
                   type: "bar",
-                  marker: { color: "#00aaff" },
+                  mode: "markers",
+                  marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout("Bar Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout(`Average Grades by Department for ${selectedYear}`)}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"

@@ -13,8 +13,8 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path='/generic-overview' element={<Dashboard/>}/>
-        <Route path="/grading-related-projects" element={<Page1 />} />
+        <Route path='/grading-related-projects' element={<Dashboard/>}/>
+        <Route path="/generic-overview" element={<Page1 />} />
         <Route path="/test-page" element={<Page2 />} />
         <Route path="/good-grading-courses" element={<Page3 />} />
         <Route path="/ai-ml-optimization" element={<Page4 />} />
