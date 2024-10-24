@@ -31,7 +31,7 @@ const HomePage = () => {
         style={{
           width: "150px",
           marginBottom: "30px",
-          marginTop: "200px", // Reduced margin for better positioning
+          marginTop: "300px", // Reduced margin for better positioning
           filter: "brightness(0) invert(1)",
         }}
       />
@@ -97,8 +97,9 @@ const HomePage = () => {
           {[
             { to: "/generic-overview", text: "Generic Overview Page" },
             { to: "/grading-related-projects", text: "Grading related projects" },
-            { to: "/ai-ml-courses", text: "ML/AI/Optimization" },
+            { to: "/test-page", text: "Test Page" },
             { to: "/good-grading-courses", text: "Good Grading Courses" },
+            { to: "/ai-ml-optimization", text: "AI/ML  or Optimization" },
           ].map((item, index) => (
             <li key={index} className="mb-3">
               <Link
@@ -139,7 +140,7 @@ const HomePage = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1.3, ease: "easeOut" }}
         >
-          Connect with us:
+          Visit us on:
         </motion.p>
         <motion.ul
           className="list-unstyled d-flex justify-content-center gap-3"

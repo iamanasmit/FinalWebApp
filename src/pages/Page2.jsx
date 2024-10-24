@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Plot from "react-plotly.js";
+import { motion } from "framer-motion"; // Import motion
 
 const Page2 = () => {
   const [data, setData] = useState([]);
@@ -54,7 +55,6 @@ const Page2 = () => {
   };
 
   useEffect(() => {
-    // Load the JSON file with course codes and average grades
     fetch("src\\pages\\seminar_records_2020.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
@@ -66,7 +66,6 @@ const Page2 = () => {
   }, []);
 
   useEffect(() => {
-    // Load the JSON file with course codes and average grades
     fetch("src\\pages\\records_2021.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
@@ -78,7 +77,6 @@ const Page2 = () => {
   }, []);
 
   useEffect(() => {
-    // Load the JSON file with course codes and average grades
     fetch("src\\pages\\records_2022.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
@@ -90,7 +88,6 @@ const Page2 = () => {
   }, []);
 
   useEffect(() => {
-    // Load the JSON file with course codes and average grades
     fetch("src\\pages\\records_2023.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
@@ -137,7 +134,6 @@ const Page2 = () => {
     margin: "0",
   };
 
-  // Dark theme layout for Plotly
   const darkThemeLayout = (title) => ({
     title: {
       text: title,
@@ -192,94 +188,110 @@ const Page2 = () => {
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Test Page</h1>
       <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
+        <motion.div 
+          style={cardStyles}
+          initial={{ opacity: 0, y: -50 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5 }}
+        >
           <h2 style={h2Styles}>Graph 1</h2>
           <div style={chartContentStyles}>
             <Plot
-              data={[
-                {
-                  x: data.map(d => d['Course Code']),
-                  y: data.map(d => d['Average Grade']),
-                  type: "scatter",
-                  mode: "markers",
-                  marker: { color: "rgb(255, 99, 132)" }
-                }
-              ]}
+              data={[{
+                x: data.map(d => d['Course Code']),
+                y: data.map(d => d['Average Grade']),
+                type: "scatter",
+                mode: "markers",
+                marker: { color: "rgb(255, 99, 132)" }
+              }]}
               layout={darkThemeLayout("Average Grades by Course Code for 2020")}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
             />
           </div>
-        </div>
-        <div style={cardStyles}>
+        </motion.div>
+        <motion.div 
+          style={cardStyles}
+          initial={{ opacity: 0, y: -50 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           <h2 style={h2Styles}>Graph 2</h2>
           <div style={chartContentStyles}>
             <Plot
-              data={[
-                {
-                  x: data1.map(d => d['Course Code']),
-                  y: data1.map(d => d['Average Grade']),
-                  type: "scatter",
-                  mode: "markers",
-                  marker: { color: "rgb(255, 99, 132)" }
-                }
-              ]}
+              data={[{
+                x: data1.map(d => d['Course Code']),
+                y: data1.map(d => d['Average Grade']),
+                type: "scatter",
+                mode: "markers",
+                marker: { color: "rgb(255, 99, 132)" }
+              }]}
               layout={darkThemeLayout("Average Grades by Course Code for 2021")}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
             />
           </div>
-        </div>
+        </motion.div>
       </div>
       <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
+        <motion.div 
+          style={cardStyles}
+          initial={{ opacity: 0, y: -50 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <h2 style={h2Styles}>Graph 3</h2>
           <div style={chartContentStyles}>
             <Plot
-              data={[
-                {
-                  x: data2.map(d => d['Course Code']),
-                  y: data2.map(d => d['Average Grade']),
-                  type: "scatter",
-                  mode: "markers",
-                  marker: { color: "rgb(255, 99, 132)" }
-                }
-              ]}
+              data={[{
+                x: data2.map(d => d['Course Code']),
+                y: data2.map(d => d['Average Grade']),
+                type: "scatter",
+                mode: "markers",
+                marker: { color: "rgb(255, 99, 132)" }
+              }]}
               layout={darkThemeLayout("Average Grades by Course Code for 2022")}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
             />
           </div>
-        </div>
-        <div style={cardStyles}>
+        </motion.div>
+        <motion.div 
+          style={cardStyles}
+          initial={{ opacity: 0, y: -50 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
           <h2 style={h2Styles}>Graph 4</h2>
           <div style={chartContentStyles}>
             <Plot
-              data={[
-                {
-                  x: data3.map(d => d['Course Code']),
-                  y: data3.map(d => d['Average Grade']),
-                  type: "scatter",
-                  mode: "markers",
-                  marker: { color: "rgb(255, 99, 132)" }
-                }
-              ]}
+              data={[{
+                x: data3.map(d => d['Course Code']),
+                y: data3.map(d => d['Average Grade']),
+                type: "scatter",
+                mode: "markers",
+                marker: { color: "rgb(255, 99, 132)" }
+              }]}
               layout={darkThemeLayout("Average Grades by Course Code for 2023")}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
             />
           </div>
-        </div>
+        </motion.div>
       </div>
       <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
+        <motion.div 
+          style={cardStyles}
+          initial={{ opacity: 0, y: -50 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <h2 style={h2Styles}>Graph 5</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
-            {/* Dropdown for Year Selection */}
             <select 
               value={selectedYear}
               onChange={handleYearChange}
@@ -301,15 +313,13 @@ const Page2 = () => {
             </select>
 
             <Plot
-              data={[
-                {
-                  x: getGraph5Data().map(d => d['Course Code']),
-                  y: getGraph5Data().map(d => d['Average Grade']),
-                  type: "scatter",
-                  mode: "markers",
-                  marker: { color: "rgb(23, 190, 207)", size: 12 },
-                },
-              ]}
+              data={[{
+                x: getGraph5Data().map(d => d['Course Code']),
+                y: getGraph5Data().map(d => d['Average Grade']),
+                type: "scatter",
+                mode: "markers",
+                marker: { color: "rgb(23, 190, 207)", size: 12 },
+              }]}
               layout={darkThemeLayout(`Average Grades by Course Code for ${selectedYear}`)}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
@@ -318,7 +328,7 @@ const Page2 = () => {
               divId="plotly-graph"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

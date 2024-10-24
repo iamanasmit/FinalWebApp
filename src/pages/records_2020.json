@@ -1,1 +1,206 @@
-[{"Course Code":"BB 694","Average Grade":9.5161290323},{"Course Code":"BB 701","Average Grade":9.1578947368},{"Course Code":"BBS801","Average Grade":9.5},{"Course Code":"CE 694","Average Grade":8.7659574468},{"Course Code":"CES801","Average Grade":9.3272727273},{"Course Code":"CHS802","Average Grade":10.0},{"Course Code":"CL 694","Average Grade":8.380952381},{"Course Code":"CLS801","Average Grade":6.25},{"Course Code":"CLS802","Average Grade":9.1764705882},{"Course Code":"CMS801","Average Grade":7.8666666667},{"Course Code":"CS 396","Average Grade":9.4444444444},{"Course Code":"CS 694","Average Grade":9.2647058824},{"Course Code":"CSS801","Average Grade":9.3333333333},{"Course Code":"CSS802","Average Grade":10.0},{"Course Code":"DE 687","Average Grade":7.873015873},{"Course Code":"DEP706","Average Grade":8.4285714286},{"Course Code":"DHS801","Average Grade":9.375},{"Course Code":"ECS801","Average Grade":9.6666666667},{"Course Code":"EE 694","Average Grade":7.9464285714},{"Course Code":"EN 406","Average Grade":7.0909090909},{"Course Code":"EN 422","Average Grade":8.7142857143},{"Course Code":"ES 296","Average Grade":8.6},{"Course Code":"ES 312","Average Grade":5.2647058824},{"Course Code":"ES 694","Average Grade":7.8235294118},{"Course Code":"ESS801","Average Grade":9.3684210526},{"Course Code":"ET 694","Average Grade":9.0},{"Course Code":"ETS801","Average Grade":9.6},{"Course Code":"GNR694","Average Grade":8.9677419355},{"Course Code":"GS 694","Average Grade":7.8529411765},{"Course Code":"GSS802","Average Grade":8.4761904762},{"Course Code":"HSS801","Average Grade":9.2727272727},{"Course Code":"HSS802","Average Grade":8.2307692308},{"Course Code":"IE 694","Average Grade":7.9583333333},{"Course Code":"IES601","Average Grade":8.4375},{"Course Code":"IES801","Average Grade":9.4},{"Course Code":"IES802","Average Grade":8.5},{"Course Code":"MES801","Average Grade":9.0},{"Course Code":"MGS801","Average Grade":9.0909090909},{"Course Code":"MGS802","Average Grade":9.4444444444},{"Course Code":"MM 396","Average Grade":4.3744680851},{"Course Code":"MM 433","Average Grade":9.0791366906},{"Course Code":"MM 694","Average Grade":8.3728813559},{"Course Code":"MMS801","Average Grade":9.0},{"Course Code":"PH 303","Average Grade":9.3793103448},{"Course Code":"PHS801","Average Grade":9.75},{"Course Code":"PHS802","Average Grade":9.0},{"Course Code":"PS 694","Average Grade":8.0833333333},{"Course Code":"PSS801","Average Grade":8.6666666667},{"Course Code":"PSS802","Average Grade":7.0},{"Course Code":"PSS803","Average Grade":9.3333333333},{"Course Code":"SC 694","Average Grade":9.6666666667}]
+[
+    {
+        "Course Code": "BB 694",
+        "Average Grade": 9.5161290323
+    },
+    {
+        "Course Code": "BB 701",
+        "Average Grade": 9.1578947368
+    },
+    {
+        "Course Code": "BBS801",
+        "Average Grade": 9.5
+    },
+    {
+        "Course Code": "CE 694",
+        "Average Grade": 8.7659574468
+    },
+    {
+        "Course Code": "CES801",
+        "Average Grade": 9.3272727273
+    },
+    {
+        "Course Code": "CHS802",
+        "Average Grade": 10.0
+    },
+    {
+        "Course Code": "CL 694",
+        "Average Grade": 8.380952381
+    },
+    {
+        "Course Code": "CLS801",
+        "Average Grade": 6.25
+    },
+    {
+        "Course Code": "CLS802",
+        "Average Grade": 9.1764705882
+    },
+    {
+        "Course Code": "CMS801",
+        "Average Grade": 7.8666666667
+    },
+    {
+        "Course Code": "CS 396",
+        "Average Grade": 9.4444444444
+    },
+    {
+        "Course Code": "CS 694",
+        "Average Grade": 9.2647058824
+    },
+    {
+        "Course Code": "CSS801",
+        "Average Grade": 9.3333333333
+    },
+    {
+        "Course Code": "CSS802",
+        "Average Grade": 10.0
+    },
+    {
+        "Course Code": "DE 687",
+        "Average Grade": 7.873015873
+    },
+    {
+        "Course Code": "DEP706",
+        "Average Grade": 8.4285714286
+    },
+    {
+        "Course Code": "DHS801",
+        "Average Grade": 9.375
+    },
+    {
+        "Course Code": "ECS801",
+        "Average Grade": 9.6666666667
+    },
+    {
+        "Course Code": "EE 694",
+        "Average Grade": 7.9464285714
+    },
+    {
+        "Course Code": "EN 406",
+        "Average Grade": 7.0909090909
+    },
+    {
+        "Course Code": "EN 422",
+        "Average Grade": 8.7142857143
+    },
+    {
+        "Course Code": "ES 296",
+        "Average Grade": 8.6
+    },
+    {
+        "Course Code": "ES 312",
+        "Average Grade": 5.2647058824
+    },
+    {
+        "Course Code": "ES 694",
+        "Average Grade": 7.8235294118
+    },
+    {
+        "Course Code": "ESS801",
+        "Average Grade": 9.3684210526
+    },
+    {
+        "Course Code": "ET 694",
+        "Average Grade": 9.0
+    },
+    {
+        "Course Code": "ETS801",
+        "Average Grade": 9.6
+    },
+    {
+        "Course Code": "GNR694",
+        "Average Grade": 8.9677419355
+    },
+    {
+        "Course Code": "GS 694",
+        "Average Grade": 7.8529411765
+    },
+    {
+        "Course Code": "GSS802",
+        "Average Grade": 8.4761904762
+    },
+    {
+        "Course Code": "HSS801",
+        "Average Grade": 9.2727272727
+    },
+    {
+        "Course Code": "HSS802",
+        "Average Grade": 8.2307692308
+    },
+    {
+        "Course Code": "IE 694",
+        "Average Grade": 7.9583333333
+    },
+    {
+        "Course Code": "IES601",
+        "Average Grade": 8.4375
+    },
+    {
+        "Course Code": "IES801",
+        "Average Grade": 9.4
+    },
+    {
+        "Course Code": "IES802",
+        "Average Grade": 8.5
+    },
+    {
+        "Course Code": "MES801",
+        "Average Grade": 9.0
+    },
+    {
+        "Course Code": "MGS801",
+        "Average Grade": 9.0909090909
+    },
+    {
+        "Course Code": "MGS802",
+        "Average Grade": 9.4444444444
+    },
+    {
+        "Course Code": "MM 396",
+        "Average Grade": 4.3744680851
+    },
+    {
+        "Course Code": "MM 433",
+        "Average Grade": 9.0791366906
+    },
+    {
+        "Course Code": "MM 694",
+        "Average Grade": 8.3728813559
+    },
+    {
+        "Course Code": "MMS801",
+        "Average Grade": 9.0
+    },
+    {
+        "Course Code": "PH 303",
+        "Average Grade": 9.3793103448
+    },
+    {
+        "Course Code": "PHS801",
+        "Average Grade": 9.75
+    },
+    {
+        "Course Code": "PHS802",
+        "Average Grade": 9.0
+    },
+    {
+        "Course Code": "PS 694",
+        "Average Grade": 8.0833333333
+    },
+    {
+        "Course Code": "PSS801",
+        "Average Grade": 8.6666666667
+    },
+    {
+        "Course Code": "PSS802",
+        "Average Grade": 7.0
+    },
+    {
+        "Course Code": "PSS803",
+        "Average Grade": 9.3333333333
+    },
+    {
+        "Course Code": "SC 694",
+        "Average Grade": 9.6666666667
+    }
+]
