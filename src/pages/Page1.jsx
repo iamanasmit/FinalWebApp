@@ -4,12 +4,25 @@ import "aos/dist/aos.css";
 import Plot from "react-plotly.js";
 
 const Page1 = () => {
+  const [data, setData] = useState([]);
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
+  const [data5, setData5] = useState([]);
+  const [data6, setData6] = useState([]);
+  const [data7, setData7] = useState([]);
+  const [data8, setData8] = useState([]);
+  const [data9, setData9] = useState([]);
+  const [data10, setData10] = useState([]);
+  const [data11, setData11] = useState([]);
+  const [selectedYear, setSelectedYear] = useState("2020");
+
   useEffect(() => {
     AOS.init({
       delay: 200,
       duration: 1000,
       easing: "ease-in-out",
-      once: true,
     });
 
     const handleResize = () => {
@@ -19,15 +32,12 @@ const Page1 = () => {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize();
+    handleResize(); // Initial call to set sizes
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const [graphSize, setGraphSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   const dashboardStyles = {
     background: "linear-gradient(135deg, #1f1c2c, #928dab)",
@@ -51,6 +61,150 @@ const Page1 = () => {
     zIndex: 1000,
   };
 
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Department_Grades_2020.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Department_Grades_2021.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData1(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data for 2021:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Department_Grades_2022.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData2(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data for 2022:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Department_Grades_2023.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData3(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data for 2023:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percentage_APs_2020.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData4(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percentage_APs_2021.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData5(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percentage_APs_2022.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData6(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percentage_APs_2023.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData7(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Registrations_Grades_2020.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData8(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Registrations_Grades_2021.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData9(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Registrations_Grades_2022.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData10(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Registrations_Grades_2023.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData11(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
   const cardStyles = {
     backgroundColor: "#2b2a3a",
     borderRadius: "10px",
@@ -60,7 +214,6 @@ const Page1 = () => {
     flexDirection: "column",
     justifyContent: "space-between",
     minWidth: "200px",
-    position: "relative",
   };
 
   const chartsSectionStyles = {
@@ -81,21 +234,6 @@ const Page1 = () => {
     alignItems: "center",
     width: "100%",
     flex: 1,
-  };
-
-  const insightSectionStyles = {
-    backgroundColor: "#2c2b4f",
-    padding: "15px",
-    borderRadius: "8px",
-    marginTop: "10px",
-    textAlign: "center",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
-  };
-
-  const insightTextStyles = {
-    color: "#ffcc00",
-    fontSize: "16px",
-    margin: 0,
   };
 
   const h2Styles = {
@@ -126,137 +264,206 @@ const Page1 = () => {
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
-    autosize: true, // Enable autosize to allow Plotly to adapt to container
+    autosize: true,  // Enable autosize to allow Plotly to adapt to container
   });
 
   const plotConfig = {
-    scrollZoom: false, // Disables scrolling to zoom
-    displayModeBar: false, // Hides the mode bar (optional)
-    editable: false, // Disables any edits like dragging, zooming, etc.
+    scrollZoom: false,       // Disables scrolling to zoom
+    displayModeBar: false,   // Hides the mode bar (optional)
+    editable: false,         // Disables any edits like dragging, zooming, etc.
   };
 
-  const graphInsights = {
-    graph1: "This line chart shows the trend of data over time. The peaks indicate key moments of increase.",
-    graph2: "This bar chart shows categorical data. The highest value is for Bananas, showing strong sales.",
-    graph3: "This pie chart highlights how the values are divided across the categories.",
-    graph4: "This heatmap shows the intensity of the data across a matrix. Darker areas represent higher values.",
-    graph5: "This 3D scatter plot showcases the relationship across three dimensions of data.",
+  const getGraphDepts = () => {
+    switch (selectedYear) {
+      case "2020":
+        return data;
+      case "2021":
+        return data1;
+      case "2022":
+        return data2;
+      case "2023":
+        return data3;
+      default:
+        return [];
+    }
+  };
+
+  const getGraphAPs = () => {
+    switch (selectedYear) {
+      case "2020":
+        return data4;
+      case "2021":
+        return data5;
+      case "2022":
+        return data6;
+      case "2023":
+        return data7;
+      default:
+        return [];
+    }
+  };
+
+  const getGraphRegs = () => {
+    switch (selectedYear) {
+      case "2020":
+        return data8;
+      case "2021":
+        return data9;
+      case "2022":
+        return data10;
+      case "2023":
+        return data11;
+      default:
+        return [];
+    }
+  };
+
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
   };
 
   return (
     <div style={dashboardStyles}>
-      <h1 style={titleStyles}>Course Statistics Dashboard</h1>
+      <h1 style={titleStyles}>Test Page</h1>
       <div style={chartsSectionStyles}>
-        <div style={cardStyles} data-aos="flip-up">
-          <h2 style={h2Styles}>Graph 1</h2>
-          <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  x: [1, 2, 3, 4],
-                  y: [10, 15, 13, 17],
-                  type: "scatter",
-                  mode: "lines+markers",
-                  marker: { color: "red" },
-                },
-              ]}
-              layout={darkThemeLayout("Line Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph-1"
-            />
-          </div>
-          {/* Insight Section */}
-          <div style={insightSectionStyles}>
-            <p style={insightTextStyles}>{graphInsights.graph1}</p>
-          </div>
-        </div>
+        <div style={cardStyles}>
+          <h2 style={h2Styles}>Average Grades by Department</h2>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
+            {/* Dropdown for Year Selection */}
+            <select 
+              value={selectedYear}
+              onChange={handleYearChange}
+              style={{
+                marginBottom: "10px",
+                marginTop: "10px",
+                padding: "10px",
+                borderRadius: "5px",
+                border: "none",
+                backgroundColor: "#2b2a3a",
+                color: "#ffffff",
+                fontSize: "16px",
+              }}
+            >
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
 
-        <div style={cardStyles} data-aos="flip-up">
-          <h2 style={h2Styles}>Graph 2</h2>
-          <div style={chartContentStyles}>
             <Plot
               data={[
                 {
-                  x: ["Apples", "Bananas", "Cherries"],
-                  y: [10, 20, 30],
+                  x: getGraphDepts().map(d => d['X']),
+                  y: getGraphDepts().map(d => d['Y']),
                   type: "bar",
-                  marker: { color: "#00aaff" },
+                  mode: "markers",
+                  marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout("Bar Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout(`Average Grades by Department for ${selectedYear}`)}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
-              divId="plotly-graph-2"
+              divId="plotly-graph"
             />
-          </div>
-          {/* Insight Section */}
-          <div style={insightSectionStyles}>
-            <p style={insightTextStyles}>{graphInsights.graph2}</p>
           </div>
         </div>
       </div>
 
       <div style={chartsSectionStyles}>
-        <div style={cardStyles} data-aos="flip-up">
-          <h2 style={h2Styles}>Graph 3</h2>
-          <div style={chartContentStyles}>
+        <div style={cardStyles}>
+          <h2 style={h2Styles}>Percentage of APs across all Departments</h2>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
+            {/* Dropdown for Year Selection */}
+            <select 
+              value={selectedYear}
+              onChange={handleYearChange}
+              style={{
+                marginBottom: "10px",
+                marginTop: "10px",
+                padding: "10px",
+                borderRadius: "5px",
+                border: "none",
+                backgroundColor: "#2b2a3a",
+                color: "#ffffff",
+                fontSize: "16px",
+              }}
+            >
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+
             <Plot
               data={[
                 {
-                  labels: ["Red", "Blue", "Green"],
-                  values: [10, 20, 30],
-                  type: "pie",
-                  marker: {
-                    colors: ["#ff6347", "#1e90ff", "#32cd32"],
-                  },
+                  x: getGraphAPs().map(d => d['X']),
+                  y: getGraphAPs().map(d => d['Y']),
+                  type: "bar",
+                  mode: "markers",
+                  marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout("Pie Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout(`Percentage of APs across all Department for ${selectedYear}`)}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
-              divId="plotly-graph-3"
+              divId="plotly-graph"
             />
-          </div>
-          {/* Insight Section */}
-          <div style={insightSectionStyles}>
-            <p style={insightTextStyles}>{graphInsights.graph3}</p>
           </div>
         </div>
+      </div>
 
-        <div style={cardStyles} data-aos="flip-up">
-          <h2 style={h2Styles}>Graph 4</h2>
-          <div style={chartContentStyles}>
+      <div style={chartsSectionStyles}>
+        <div style={cardStyles}>
+          <h2 style={h2Styles}>Average Grades vs Number of Registrations</h2>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
+            {/* Dropdown for Year Selection */}
+            <select 
+              value={selectedYear}
+              onChange={handleYearChange}
+              style={{
+                marginBottom: "10px",
+                marginTop: "10px",
+                padding: "10px",
+                borderRadius: "5px",
+                border: "none",
+                backgroundColor: "#2b2a3a",
+                color: "#ffffff",
+                fontSize: "16px",
+              }}
+            >
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+              <option value="2023">2023</option>
+            </select>
+
             <Plot
               data={[
                 {
-                  z: [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
-                  type: "heatmap",
-                  colorscale: "Viridis",
+                  x: getGraphRegs().map(d => d['X']),
+                  y: getGraphRegs().map(d => d['Y']),
+                  type: "bar",
+                  mode: "markers",
+                  marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout("Heatmap")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout(`Average Grades vs Number of Registrations in ${selectedYear}`)}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
-              divId="plotly-graph-4"
+              divId="plotly-graph"
             />
-          </div>
-          {/* Insight Section */}
-          <div style={insightSectionStyles}>
-            <p style={insightTextStyles}>{graphInsights.graph4}</p>
           </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Page1;
