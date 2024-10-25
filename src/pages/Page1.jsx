@@ -8,10 +8,6 @@ const Page1 = () => {
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
-  const [data4, setData4] = useState([]);
-  const [data5, setData5] = useState([]);
-  const [data6, setData6] = useState([]);
-  const [data7, setData7] = useState([]);
   const [data8, setData8] = useState([]);
   const [data9, setData9] = useState([]);
   const [data10, setData10] = useState([]);
@@ -20,6 +16,28 @@ const Page1 = () => {
   const [data13, setData13] = useState([]);
   const [data14, setData14] = useState([]);
   const [data15, setData15] = useState([]);
+  const [selectedSemester, setSelectedSemester] = useState("Semester 1");
+
+  const yearData = {
+    year: ["2020", "2021", "2022", "2023"],
+    student_sem1: [996, 1350, 1264, 1238],
+    student_sem2: [950, 1220, 1334, 1305],
+  };
+
+  const totalRegistrations = yearData.student_sem1.map(
+    (value, index) => value + yearData.student_sem2[index]
+  );
+
+  const handleSemesterChange = (event) => {
+    setSelectedSemester(event.target.value);
+  };
+
+  const getSelectedData = () => {
+    if (selectedSemester === "Semester 1") return yearData.student_sem1;
+    if (selectedSemester === "Semester 2") return yearData.student_sem2;
+    return totalRegistrations;
+  };
+
   const [selectedYear, setSelectedYear] = useState("2020");
 
   useEffect(() => {
@@ -41,7 +59,10 @@ const Page1 = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+  const [graphSize, setGraphSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
   const dashboardStyles = {
     background: "linear-gradient(135deg, #1f1c2c, #928dab)",
@@ -110,54 +131,6 @@ const Page1 = () => {
       })
       .catch((error) => {
         console.error("Error loading JSON data for 2023:", error);
-      });
-  }, []);
-
-  useEffect(() => {
-    // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Percentage_APs_2020.json") // Adjust this path to your file location
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setData4(jsonData);
-      })
-      .catch((error) => {
-        console.error("Error loading JSON data:", error);
-      });
-  }, []);
-
-  useEffect(() => {
-    // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Percentage_APs_2021.json") // Adjust this path to your file location
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setData5(jsonData);
-      })
-      .catch((error) => {
-        console.error("Error loading JSON data:", error);
-      });
-  }, []);
-
-  useEffect(() => {
-    // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Percentage_APs_2022.json") // Adjust this path to your file location
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setData6(jsonData);
-      })
-      .catch((error) => {
-        console.error("Error loading JSON data:", error);
-      });
-  }, []);
-
-  useEffect(() => {
-    // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Percentage_APs_2023.json") // Adjust this path to your file location
-      .then((response) => response.json())
-      .then((jsonData) => {
-        setData7(jsonData);
-      })
-      .catch((error) => {
-        console.error("Error loading JSON data:", error);
       });
   }, []);
 
@@ -257,6 +230,7 @@ const Page1 = () => {
       });
   }, []);
 
+
   const cardStyles = {
     backgroundColor: "#2b2a3a",
     borderRadius: "10px",
@@ -316,13 +290,13 @@ const Page1 = () => {
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
-    autosize: true,  // Enable autosize to allow Plotly to adapt to container
+    autosize: true, // Enable autosize to allow Plotly to adapt to container
   });
 
   const plotConfig = {
-    scrollZoom: false,       // Disables scrolling to zoom
-    displayModeBar: false,   // Hides the mode bar (optional)
-    editable: false,         // Disables any edits like dragging, zooming, etc.
+    scrollZoom: false, // Disables scrolling to zoom
+    displayModeBar: false, // Hides the mode bar (optional)
+    editable: false, // Disables any edits like dragging, zooming, etc.
   };
 
   const getGraphDepts = () => {
@@ -335,21 +309,6 @@ const Page1 = () => {
         return data2;
       case "2023":
         return data3;
-      default:
-        return [];
-    }
-  };
-
-  const getGraphAPs = () => {
-    switch (selectedYear) {
-      case "2020":
-        return data4;
-      case "2021":
-        return data5;
-      case "2022":
-        return data6;
-      case "2023":
-        return data7;
       default:
         return [];
     }
@@ -370,7 +329,7 @@ const Page1 = () => {
     }
   };
 
-  const getRegistrationGradesData=()=>{
+  const getUnconventionalCoursesData = () => {
     switch (selectedYear) {
       case "2020":
         return data12;
@@ -383,7 +342,7 @@ const Page1 = () => {
       default:
         return [];
     }
-  }
+  };
 
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
@@ -392,12 +351,13 @@ const Page1 = () => {
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Generic Overview</h1>
+      {/*Average grades by department */}
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
           <h2 style={h2Styles}>Average Grades by Department</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedYear}
               onChange={handleYearChange}
               style={{
@@ -420,14 +380,16 @@ const Page1 = () => {
             <Plot
               data={[
                 {
-                  x: getGraphDepts().map(d => d['X']),
-                  y: getGraphDepts().map(d => d['Y']),
+                  x: getGraphDepts().map((d) => d["X"]),
+                  y: getGraphDepts().map((d) => d["Y"]),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(`Average Grades by Department for ${selectedYear}`)}
+              layout={darkThemeLayout(
+                `Average Grades by Department for ${selectedYear}`
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -438,58 +400,13 @@ const Page1 = () => {
         </div>
       </div>
 
-      <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
-          <h2 style={h2Styles}>Percentage of APs across all Departments</h2>
-          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
-            {/* Dropdown for Year Selection */}
-            <select 
-              value={selectedYear}
-              onChange={handleYearChange}
-              style={{
-                marginBottom: "10px",
-                marginTop: "10px",
-                padding: "10px",
-                borderRadius: "5px",
-                border: "none",
-                backgroundColor: "#2b2a3a",
-                color: "#ffffff",
-                fontSize: "16px",
-              }}
-            >
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-              <option value="2023">2023</option>
-            </select>
-
-            <Plot
-              data={[
-                {
-                  x: getGraphAPs().map(d => d['X']),
-                  y: getGraphAPs().map(d => d['Y']),
-                  type: "bar",
-                  mode: "markers",
-                  marker: { color: "rgb(23, 190, 207)", size: 12 },
-                },
-              ]}
-              layout={darkThemeLayout(`Percentage of APs across all Department for ${selectedYear}`)}
-              style={{ width: "100%", height: "100%" }}
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
-            />
-          </div>
-        </div>
-      </div>
-
+      {/*Average grades vs Number of Registrations */}
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
           <h2 style={h2Styles}>Average Grades vs Number of Registrations</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedYear}
               onChange={handleYearChange}
               style={{
@@ -512,14 +429,16 @@ const Page1 = () => {
             <Plot
               data={[
                 {
-                  x: getRegistrationGradesData().map(d => d['X']),
-                  y: getRegistrationGradesData().map(d => d['Y']),
+                  x: getGraphRegs().map((d) => d["X"]),
+                  y: getGraphRegs().map((d) => d["Y"]),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(`Average Grades vs Number of Registrations in ${selectedYear}`)}
+              layout={darkThemeLayout(
+                `Average Grades vs Number of Registrations in ${selectedYear}`
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -530,12 +449,13 @@ const Page1 = () => {
         </div>
       </div>
 
+      {/*Unconventional Courses */}
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Average Grades vs Number of Registrations</h2>
+          <h2 style={h2Styles}>Unconventional Courses</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedYear}
               onChange={handleYearChange}
               style={{
@@ -558,14 +478,16 @@ const Page1 = () => {
             <Plot
               data={[
                 {
-                  x: getGraphRegs().map(d => d['X']),
-                  y: getGraphRegs().map(d => d['Y']),
+                  x: getUnconventionalCoursesData().map((d) => d["X"]),
+                  y: getUnconventionalCoursesData().map((d) => d["Y"]),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(`Average Grades vs Number of Registrations in ${selectedYear}`)}
+              layout={darkThemeLayout(
+                `Average Grades vs Number of Registrations in ${selectedYear}`
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -573,10 +495,49 @@ const Page1 = () => {
               divId="plotly-graph"
             />
           </div>
+        </div>
+      </div>
+
+      {/*Minor Registrations by Semester */}
+      <div style={chartsSectionStyles}>
+        <div style={cardStyles}>
+          <h2 style={{ color: "#ffffff" }}>
+            Minor Registrations by Semester
+          </h2>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
+            <select
+              value={selectedSemester}
+              onChange={handleSemesterChange}
+              style={{
+                padding: "10px",
+                borderRadius: "5px",
+                backgroundColor: "#2b2a3a",
+                color: "#ffffff",
+                fontSize: "16px",
+              }}
+            >
+              <option value="Semester 1">Semester 1</option>
+              <option value="Semester 2">Semester 2</option>
+              <option value="Total">Total Registrations</option>
+            </select>
+          </div>
+          <Plot
+            data={[
+              {
+                x: yearData.year,
+                y: getSelectedData(),
+                type: "bar",
+                marker: { color: "rgb(23, 190, 207)" },
+              },
+            ]}
+            layout={darkThemeLayout(`Registrations for ${selectedSemester}`)}
+            style={{ width: "100%", height: "60vh" }}
+            config={plotConfig}
+          />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Page1;

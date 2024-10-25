@@ -191,6 +191,8 @@ const Dashboard = () => {
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Test Page</h1>
+
+      {/* Percent APs given by department */}
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
           <h2 style={h2Styles}>Percentage APs given by Department</h2>
@@ -236,16 +238,17 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 3</h2>
+          <h2 style={h2Styles}>Yearwise grading stats</h2>
           <div style={chartContentStyles}>
             <Plot
               data={[
                 {
-                  labels: ["Red", "Blue", "Green"],
-                  values: [10, 20, 30],
-                  type: "pie",
+                  x: ["2020", "2021", "2022", "2023"],
+                  y: [8.2186824115, 7.9254884772, 7.9042077959, 7.8633442403],
+                  type: "bar",
                   marker: {
                     colors: ["#ff6347", "#1e90ff", "#32cd32"],
                   },
