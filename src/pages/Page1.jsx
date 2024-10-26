@@ -8,37 +8,73 @@ const Page1 = () => {
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
+
   const [data8, setData8] = useState([]);
   const [data9, setData9] = useState([]);
   const [data10, setData10] = useState([]);
   const [data11, setData11] = useState([]);
+
   const [data12, setData12] = useState([]);
   const [data13, setData13] = useState([]);
   const [data14, setData14] = useState([]);
   const [data15, setData15] = useState([]);
-  const [selectedSemester, setSelectedSemester] = useState("Semester 1");
 
-  const yearData = {
-    year: ["2020", "2021", "2022", "2023"],
-    student_sem1: [996, 1350, 1264, 1238],
-    student_sem2: [950, 1220, 1334, 1305],
-  };
+  const [data16, setData16] = useState([]);
+  const [data17, setData17] = useState([]);
 
-  const totalRegistrations = yearData.student_sem1.map(
-    (value, index) => value + yearData.student_sem2[index]
-  );
+  const [data18, setData18] = useState([]);
+  const [data19, setData19] = useState([]);
+  const [data20, setData20] = useState([]);
+  const [data21, setData21] = useState([]);
 
-  const handleSemesterChange = (event) => {
-    setSelectedSemester(event.target.value);
-  };
+  const [data22, setData22] = useState([]);
+  const [data23, setData23] = useState([]);
+  const [data24, setData24] = useState([]);
+  const [data25, setData25] = useState([]);
 
-  const getSelectedData = () => {
-    if (selectedSemester === "Semester 1") return yearData.student_sem1;
-    if (selectedSemester === "Semester 2") return yearData.student_sem2;
-    return totalRegistrations;
-  };
+  const [data26, setData26] = useState([]);
+  const [data27, setData27] = useState([]);
+  const [data28, setData28] = useState([]);
+  const [data29, setData29] = useState([]);
+  const [data30, setData30] = useState([]);
+  const [data31, setData31] = useState([]);
+  const [data32, setData32] = useState([]);
+  const [data33, setData33] = useState([]);
+  const [data34, setData34] = useState([]);
+  const [data35, setData35] = useState([]);
+  const [data36, setData36] = useState([]);
+  const [data37, setData37] = useState([]);
+  const [data38, setData38] = useState([]);
+  const [data39, setData39] = useState([]);
+  const [data40, setData40] = useState([]);
+  const [data41, setData41] = useState([]);
+  const [data42, setData42] = useState([]);
 
-  const [selectedYear, setSelectedYear] = useState("2020");
+  const [data43, setData43] = useState([]);
+  const [data44, setData44] = useState([]);
+  const [data45, setData45] = useState([]);
+  const [data46, setData46] = useState([]);
+  const [data47, setData47] = useState([]);
+  const [data48, setData48] = useState([]);
+  const [data49, setData49] = useState([]);
+  const [data50, setData50] = useState([]);
+  const [data51, setData51] = useState([]);
+  const [data52, setData52] = useState([]);
+  const [data53, setData53] = useState([]);
+  const [data54, setData54] = useState([]);
+  const [data55, setData55] = useState([]);
+  const [data56, setData56] = useState([]);
+  const [data57, setData57] = useState([]);
+
+  const [selectedSem,setSelectedSem] = useState("1");
+
+  const [selectedYear1, setSelectedYear1] = useState("2020");
+  const [selectedYear3, setSelectedYear3] = useState("2020");
+  const [selectedYear4, setSelectedYear4] = useState("2020");
+  const [selectedYear5, setSelectedYear5] = useState("2020");
+
+  const [selectedCourse1,setSelectedCourse1] = useState('AE');
+  const [selectedCourse2,setSelectedCourse2] = useState('AE');
 
   useEffect(() => {
     AOS.init({
@@ -59,10 +95,7 @@ const Page1 = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const [graphSize, setGraphSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   const dashboardStyles = {
     background: "linear-gradient(135deg, #1f1c2c, #928dab)",
@@ -88,7 +121,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Department_Grades_2020.json") // Adjust this path to your file location
+    fetch("Department_Grades_2020.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData(jsonData);
@@ -100,7 +133,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Department_Grades_2021.json") // Adjust this path to your file location
+    fetch("Department_Grades_2021.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData1(jsonData);
@@ -112,7 +145,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Department_Grades_2022.json") // Adjust this path to your file location
+    fetch("Department_Grades_2022.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData2(jsonData);
@@ -124,7 +157,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Department_Grades_2023.json") // Adjust this path to your file location
+    fetch("Department_Grades_2023.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData3(jsonData);
@@ -136,7 +169,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Registrations_Grades_2020.json") // Adjust this path to your file location
+    fetch("Registrations_Grades_2020.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData8(jsonData);
@@ -148,7 +181,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Registrations_Grades_2021.json") // Adjust this path to your file location
+    fetch("Registrations_Grades_2021.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData9(jsonData);
@@ -160,7 +193,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Registrations_Grades_2022.json") // Adjust this path to your file location
+    fetch("Registrations_Grades_2022.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData10(jsonData);
@@ -172,7 +205,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Registrations_Grades_2023.json") // Adjust this path to your file location
+    fetch("Registrations_Grades_2023.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData11(jsonData);
@@ -184,7 +217,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Registrations_Grades_2020.json") // Adjust this path to your file location
+    fetch("Regs_Years_Minors_2020.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData12(jsonData);
@@ -196,7 +229,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Registrations_Grades_2021.json") // Adjust this path to your file location
+    fetch("Regs_Years_Minors_2021.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData13(jsonData);
@@ -208,7 +241,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Registrations_Grades_2022.json") // Adjust this path to your file location
+    fetch("Regs_Years_Minors_2022.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData14(jsonData);
@@ -220,7 +253,7 @@ const Page1 = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Registrations_Grades_2023.json") // Adjust this path to your file location
+    fetch("Regs_Years_Minors_2023.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData15(jsonData);
@@ -230,6 +263,509 @@ const Page1 = () => {
       });
   }, []);
 
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Regs_Sem_Minors_1.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData16(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Regs_Sem_Minors_2.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData17(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Average_2XX_2020.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData18(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Average_2XX_2021.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData19(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Average_2XX_2022.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData20(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Average_2XX_2023.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData21(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Average_3XX_2020.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData22(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Average_3XX_2021.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData23(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Average_3XX_2022.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData24(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Average_3XX_2023.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData25(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_AE.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData26(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_CE.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData27(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_CH.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData28(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_CL.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData29(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_CS.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData30(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_DS.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData31(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_EC.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData32(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_EE.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData33(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_EN.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData34(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_ES.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData35(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_HS.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData36(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_DE.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData37(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_ME.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData38(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_MM.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData39(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_PH.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData40(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_MA.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData41(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_2XX_SC.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData42(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_AE.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData43(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_CE.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData44(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_CL.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData45(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_CS.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData46(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_DS.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData47(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_EC.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData48(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_EE.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData49(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_EN.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData50(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_ES.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData51(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_HS.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData52(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_DE.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData53(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_ME.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData54(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_MM.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData55(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_PH.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData56(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
+
+useEffect(() => {
+    // Load the JSON file with course codes and average grades
+    fetch("Percent_Grades_3XX_SC.json") // Adjust this path to your file location
+      .then((response) => response.json())
+      .then((jsonData) => {
+        setData57(jsonData);
+      })
+      .catch((error) => {
+        console.error("Error loading JSON data:", error);
+      });
+  }, []);
 
   const cardStyles = {
     backgroundColor: "#2b2a3a",
@@ -290,17 +826,17 @@ const Page1 = () => {
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
-    autosize: true, // Enable autosize to allow Plotly to adapt to container
+    autosize: true,  // Enable autosize to allow Plotly to adapt to container
   });
 
   const plotConfig = {
-    scrollZoom: false, // Disables scrolling to zoom
-    displayModeBar: false, // Hides the mode bar (optional)
-    editable: false, // Disables any edits like dragging, zooming, etc.
+    scrollZoom: false,       // Disables scrolling to zoom
+    displayModeBar: false,   // Hides the mode bar (optional)
+    editable: false,         // Disables any edits like dragging, zooming, etc.
   };
 
   const getGraphDepts = () => {
-    switch (selectedYear) {
+    switch (selectedYear1) {
       case "2020":
         return data;
       case "2021":
@@ -315,7 +851,7 @@ const Page1 = () => {
   };
 
   const getGraphRegs = () => {
-    switch (selectedYear) {
+    switch (selectedYear3) {
       case "2020":
         return data8;
       case "2021":
@@ -329,37 +865,160 @@ const Page1 = () => {
     }
   };
 
-  const getUnconventionalCoursesData = () => {
-    switch (selectedYear) {
-      case "2020":
-        return data12;
-      case "2021":
-        return data13;
-      case "2022":
-        return data14;
-      case "2023":
-        return data15;
+  const getGraphRegsMinorsSems = () => {
+    switch (selectedSem) {
+      case "1":
+        return data16;
+      case "2":
+        return data17;
       default:
         return [];
     }
   };
 
-  const handleYearChange = (event) => {
-    setSelectedYear(event.target.value);
+  const getAverage2XX = () => {
+    switch (selectedYear4) {
+      case "2020":
+        return data18;
+      case "2021":
+        return data19;
+      case "2022":
+        return data20;
+      case "2023":
+        return data21;
+      default:
+        return [];
+    }
+  };
+
+  const getAverage3XX = () => {
+    switch (selectedYear4) {
+      case "2020":
+        return data22;
+      case "2021":
+        return data23;
+      case "2022":
+        return data24;
+      case "2023":
+        return data25;
+      default:
+        return [];
+    }
+  };
+
+  const getGradePercent2XX = () => {
+    switch (selectedCourse1) {
+      case "AE":
+    return data26;
+      case "CE":
+    return data27;
+      case "CH":
+    return data28;
+      case "CL":
+    return data29;
+      case "CS":
+    return data30;
+      case "DS":
+    return data31;
+      case "EC":
+    return data32;
+      case "EE":
+    return data33;
+      case "EN":
+    return data34;
+      case "ES":
+    return data35;
+      case "HS":
+    return data36;
+      case "DE":
+    return data37;
+      case "ME":
+    return data38;
+      case "MM":
+    return data39;
+      case "PH":
+    return data40;
+      case "MA":
+    return data41;
+      case "SC":
+    return data42;
+      default:
+        return [];
+    }
+  };
+
+  const getGradePercent3XX = () => {
+    switch (selectedCourse2) {
+      case "AE":
+    return data43;
+      case "CE":
+    return data44;
+      case "CL":
+    return data45;
+      case "CS":
+    return data46;
+      case "DS":
+    return data47;
+      case "EC":
+    return data48;
+      case "EE":
+    return data49;
+      case "EN":
+    return data50;
+      case "ES":
+    return data51;
+      case "HS":
+    return data52;
+      case "DE":
+    return data53;
+      case "ME":
+    return data54;
+      case "MM":
+    return data55;
+      case "PH":
+    return data56;
+      case "SC":
+    return data57;
+      default:
+        return [];
+    }
+  };
+
+  const handleYearChange1 = (event) => {
+    setSelectedYear1(event.target.value);
+  };
+
+  const handleYearChange3 = (event) => {
+    setSelectedYear3(event.target.value);
+  };
+
+  const handleYearChange4 = (event) => {
+    setSelectedYear4(event.target.value);
+  };
+
+  const handleSemChange = (event) => {
+    setSelectedSem(event.target.value);
+  };
+
+  const handleCourseChange1 = (event) => {
+    setSelectedCourse1(event.target.value);
+  };
+
+  const handleCourseChange2 = (event) => {
+    setSelectedCourse2(event.target.value);
   };
 
   return (
     <div style={dashboardStyles}>
-      <h1 style={titleStyles}>Generic Overview</h1>
-      {/*Average grades by department */}
+      <h1 style={titleStyles}>Test Page</h1>
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
           <h2 style={h2Styles}>Average Grades by Department</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select
-              value={selectedYear}
-              onChange={handleYearChange}
+            <select 
+              value={selectedYear1}
+              onChange={handleYearChange1}
               style={{
                 marginBottom: "10px",
                 marginTop: "10px",
@@ -380,16 +1039,14 @@ const Page1 = () => {
             <Plot
               data={[
                 {
-                  x: getGraphDepts().map((d) => d["X"]),
-                  y: getGraphDepts().map((d) => d["Y"]),
+                  x: getGraphDepts().map(d => d['X']),
+                  y: getGraphDepts().map(d => d['Y']),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(
-                `Average Grades by Department for ${selectedYear}`
-              )}
+              layout={darkThemeLayout(`Average Grades by Department for ${selectedYear1}`)}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -400,15 +1057,14 @@ const Page1 = () => {
         </div>
       </div>
 
-      {/*Average grades vs Number of Registrations */}
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
           <h2 style={h2Styles}>Average Grades vs Number of Registrations</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select
-              value={selectedYear}
-              onChange={handleYearChange}
+            <select 
+              value={selectedYear3}
+              onChange={handleYearChange3}
               style={{
                 marginBottom: "10px",
                 marginTop: "10px",
@@ -429,16 +1085,14 @@ const Page1 = () => {
             <Plot
               data={[
                 {
-                  x: getGraphRegs().map((d) => d["X"]),
-                  y: getGraphRegs().map((d) => d["Y"]),
+                  x: getGraphRegs().map(d => d['X']),
+                  y: getGraphRegs().map(d => d['Y']),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(
-                `Average Grades vs Number of Registrations in ${selectedYear}`
-              )}
+              layout={darkThemeLayout(`Average Grades vs Number of Registrations in ${selectedYear3}`)}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -449,15 +1103,58 @@ const Page1 = () => {
         </div>
       </div>
 
-      {/*Unconventional Courses */}
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Unconventional Courses</h2>
+          <h2 style={h2Styles}>Number of Minor Registrations by Year</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select
-              value={selectedYear}
-              onChange={handleYearChange}
+            <select 
+              value={selectedSem}
+              onChange={handleSemChange}
+              style={{
+                marginBottom: "10px",
+                marginTop: "10px",
+                padding: "10px",
+                borderRadius: "5px",
+                border: "none",
+                backgroundColor: "#2b2a3a",
+                color: "#ffffff",
+                fontSize: "16px",
+              }}
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+
+            <Plot
+              data={[
+                {
+                  x: getGraphRegsMinorsSems().map(d => d['X']),
+                  y: getGraphRegsMinorsSems().map(d => d['Y']),
+                  type: "bar",
+                  mode: "markers",
+                  marker: { color: "rgb(23, 190, 207)", size: 12 },
+                },
+              ]}
+              layout={darkThemeLayout(`Number of Minor Registrations by Year for Sem:${selectedSem}`)}
+              style={{ width: "100%", height: "100%" }}
+              config={plotConfig}
+              useResizeHandler
+              className="plotly-graph"
+              divId="plotly-graph"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div style={chartsSectionStyles}>
+        <div style={cardStyles}>
+          <h2 style={h2Styles}>Average Grade of 2XX and 3XX Courses by Department</h2>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
+            {/* Dropdown for Year Selection */}
+            <select 
+              value={selectedYear4}
+              onChange={handleYearChange4}
               style={{
                 marginBottom: "10px",
                 marginTop: "10px",
@@ -478,16 +1175,23 @@ const Page1 = () => {
             <Plot
               data={[
                 {
-                  x: getUnconventionalCoursesData().map((d) => d["X"]),
-                  y: getUnconventionalCoursesData().map((d) => d["Y"]),
-                  type: "bar",
-                  mode: "markers",
-                  marker: { color: "rgb(23, 190, 207)", size: 12 },
+                  x: getAverage2XX().map(d => d['X']),
+                  y: getAverage2XX().map(d => d['Y']),
+                  type: "scatter",
+                  mode: "lines+markers",
+                  marker: { color: "red" },
+                  name: "2XX Courses"
                 },
+                {
+                  x: getAverage3XX().map(d => d['X']),
+                  y: getAverage3XX().map(d => d['Y']),
+                  type: "scatter",
+                  mode: "lines+markers",
+                  marker: { color: "blue" },
+                  name: "3XX Courses"
+                }
               ]}
-              layout={darkThemeLayout(
-                `Average Grades vs Number of Registrations in ${selectedYear}`
-              )}
+              layout={darkThemeLayout(`Average Grade of 2XX and 3XX Courses by Department for ${selectedYear4}`)}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -498,46 +1202,123 @@ const Page1 = () => {
         </div>
       </div>
 
-      {/*Minor Registrations by Semester */}
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={{ color: "#ffffff" }}>
-            Minor Registrations by Semester
-          </h2>
+          <h2 style={h2Styles}>Grades Distribution by Department for 2XX Courses</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
-            <select
-              value={selectedSemester}
-              onChange={handleSemesterChange}
+            {/* Dropdown for Year Selection */}
+            <select 
+              value={selectedCourse1}
+              onChange={handleCourseChange1}
               style={{
+                marginBottom: "10px",
+                marginTop: "10px",
                 padding: "10px",
                 borderRadius: "5px",
+                border: "none",
                 backgroundColor: "#2b2a3a",
                 color: "#ffffff",
                 fontSize: "16px",
               }}
             >
-              <option value="Semester 1">Semester 1</option>
-              <option value="Semester 2">Semester 2</option>
-              <option value="Total">Total Registrations</option>
+              <option value="AE">AE</option>
+              <option value="CE">CE</option>
+              <option value="CH">CH</option>
+              <option value="CL">CL</option>
+              <option value="CS">CS</option>
+              <option value="DS">DS</option>
+              <option value="EC">EC</option>
+              <option value="EE">EE</option>
+              <option value="EN">EN</option>
+              <option value="ES">ES</option>
+              <option value="HS">HS</option>
+              <option value="DE">DE</option>
+              <option value="ME">ME</option>
+              <option value="MM">MM</option>
+              <option value="PH">PH</option>
+              <option value="MA">MA</option>
+              <option value="SC">SC</option>
             </select>
+
+            <Plot
+              data={[
+                {
+                  x: getGradePercent2XX().map(d => d['X']),
+                  y: getGradePercent2XX().map(d => d['Y']),
+                  type: "bar",
+                  mode: "markers",
+                  marker: { color: "rgb(23, 190, 207)", size: 12 },
+                },
+              ]}
+              layout={darkThemeLayout(`Grade Distribution for 2XX Courses for ${selectedCourse1}`)}
+              style={{ width: "100%", height: "100%" }}
+              config={plotConfig}
+              useResizeHandler
+              className="plotly-graph"
+              divId="plotly-graph"
+            />
           </div>
-          <Plot
-            data={[
-              {
-                x: yearData.year,
-                y: getSelectedData(),
-                type: "bar",
-                marker: { color: "rgb(23, 190, 207)" },
-              },
-            ]}
-            layout={darkThemeLayout(`Registrations for ${selectedSemester}`)}
-            style={{ width: "100%", height: "60vh" }}
-            config={plotConfig}
-          />
+        </div>
+      </div>
+
+      <div style={chartsSectionStyles}>
+        <div style={cardStyles}>
+          <h2 style={h2Styles}>Grades Distribution by Department for 3XX Courses</h2>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
+            {/* Dropdown for Year Selection */}
+            <select 
+              value={selectedCourse2}
+              onChange={handleCourseChange2}
+              style={{
+                marginBottom: "10px",
+                marginTop: "10px",
+                padding: "10px",
+                borderRadius: "5px",
+                border: "none",
+                backgroundColor: "#2b2a3a",
+                color: "#ffffff",
+                fontSize: "16px",
+              }}
+            >
+              <option value="AE">AE</option>
+              <option value="CE">CE</option>
+              <option value="CL">CL</option>
+              <option value="CS">CS</option>
+              <option value="DS">DS</option>
+              <option value="EC">EC</option>
+              <option value="EE">EE</option>
+              <option value="EN">EN</option>
+              <option value="ES">ES</option>
+              <option value="HS">HS</option>
+              <option value="DE">DE</option>
+              <option value="ME">ME</option>
+              <option value="MM">MM</option>
+              <option value="PH">PH</option>
+              <option value="SC">SC</option>
+            </select>
+
+            <Plot
+              data={[
+                {
+                  x: getGradePercent3XX().map(d => d['X']),
+                  y: getGradePercent3XX().map(d => d['Y']),
+                  type: "bar",
+                  mode: "markers",
+                  marker: { color: "rgb(23, 190, 207)", size: 12 },
+                },
+              ]}
+              layout={darkThemeLayout(`Grade Distribution for 3XX Courses for ${selectedCourse2}`)}
+              style={{ width: "100%", height: "100%" }}
+              config={plotConfig}
+              useResizeHandler
+              className="plotly-graph"
+              divId="plotly-graph"
+            />
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Page1;
