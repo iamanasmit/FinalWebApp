@@ -1,5 +1,5 @@
 {
-  "name": "error_new",
+  "name": "final-web-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "framer-motion": "^11.11.10",
+    "animate.css": "^4.1.1",
+    "bootstrap": "^5.3.3",
+    "framer-motion": "^11.11.9",
+    "papaparse": "^5.4.1",
+    "plotly.js": "^2.35.2",
     "react": "^18.2.0",
+    "react-card-flip": "^1.2.3",
     "react-dom": "^18.2.0",
-    "react-plotly.js": "^2.6.0"
+    "react-plotly.js": "^2.6.0",
+    "react-spring": "^9.7.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

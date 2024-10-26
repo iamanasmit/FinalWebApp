@@ -18,16 +18,24 @@ const Page3 = () => {
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Initial call to set sizes
+    handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("src\\pages\\data\\good_grading_courses.json")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error fetching JSON data:", error));
+  }, []);
 
   const dashboardStyles = {
     background: "linear-gradient(135deg, #1f1c2c, #928dab)",
-        color: "#ffffff",
+    color: "#ffffff",
     padding: "20px",
     fontFamily: "Arial, sans-serif",
     height: "100vh",
@@ -83,7 +91,10 @@ const Page3 = () => {
     margin: "0",
   };
 
-  // Dark theme layout for Plotly
+  // Extract CBS scores and course codes for charts
+  const cbsScores = data.map((item) => item.CBS);
+  const courseCodes = data.map((item) => item["Course Code"]);
+
   const darkThemeLayout = (title) => ({
     title: {
       text: title,
@@ -91,70 +102,64 @@ const Page3 = () => {
         color: "#ffffff",
       },
     },
-    paper_bgcolor: "#1c1b29", // Background color of the entire chart
-    plot_bgcolor: "#2b2a3a", // Background color of the plot
+    paper_bgcolor: "#1c1b29",
+    plot_bgcolor: "#2b2a3a",
     font: {
-      color: "#ffffff", // Default text color
+      color: "#ffffff",
     },
     xaxis: {
-      color: "#ffffff", // Axis labels color
+      color: "#ffffff",
       tickcolor: "#ffffff",
-      gridcolor: "#444444", // Gridline color for a subtle contrast
+      gridcolor: "#444444",
     },
     yaxis: {
       color: "#ffffff",
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
-    autosize: true,  // Enable autosize to allow Plotly to adapt to container
+    autosize: true,
   });
 
   const plotConfig = {
-    scrollZoom: false,       // Disables scrolling to zoom
-    displayModeBar: false,   // Hides the mode bar (optional)
-    editable: false,         // Disables any edits like dragging, zooming, etc.
+    scrollZoom: false,
+    displayModeBar: false,
+    editable: false,
   };
+
+  // Component to explain CBS calculation
+  const CBSSummary = () => (
+    <div style={{ color: "#ffffff", margin: "20px 0", padding: "20px", backgroundColor: "#2b2a3a", borderRadius: "10px" }}>
+      <h2>What is CBS?</h2>
+      <p>
+        CBS (CPI Booster Score) is a metric designed to help identify courses that have a higher potential to improve a student's CPI (Cumulative Performance Index).
+        It considers multiple factors:
+      </p>
+      <ul>
+        <li><strong>Grade Distribution:</strong> Courses with more high grades (APs, AAs, ABs) receive higher CBS scores.</li>
+        <li><strong>Enrollment Numbers:</strong> Courses with higher enrollment have reduced score penalties, as they offer more reliable grade distributions.</li>
+        <li><strong>Weighted Average by Semester:</strong> Recent semesters contribute more to CBS than older semesters, ensuring the score reflects current grading trends.</li>
+      </ul>
+    </div>
+  );
 
   return (
     <div style={dashboardStyles}>
-      <h1 style={titleStyles}>Test Page</h1>
+      <h1 style={titleStyles}>Good Grading Courses</h1>
+      <CBSSummary />
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 1</h2>
+          <h2 style={h2Styles}>CBS Scores Histogram</h2>
           <div style={chartContentStyles}>
             <Plot
               data={[
                 {
-                  x: [1, 2, 3, 4],
-                  y: [10, 15, 13, 17],
-                  type: "scatter",
-                  mode: "lines+markers",
-                  marker: { color: "red" },
-                },
-              ]}
-              layout={darkThemeLayout("Line Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
-            />
-          </div>
-        </div>
-        <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 2</h2>
-          <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  x: ["Apples", "Bananas", "Cherries"],
-                  y: [10, 20, 30],
-                  type: "bar",
+                  x: cbsScores,
+                  type: "histogram",
                   marker: { color: "#00aaff" },
                 },
               ]}
-              layout={darkThemeLayout("Bar Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout("Histogram of CBS Scores")}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
@@ -165,70 +170,51 @@ const Page3 = () => {
       </div>
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 3</h2>
+          <h2 style={h2Styles}>CBS Score vs. Course Code</h2>
           <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  labels: ["Red", "Blue", "Green"],
-                  values: [10, 20, 30],
-                  type: "pie",
-                  marker: {
-                    colors: ["#ff6347", "#1e90ff", "#32cd32"],
-                  },
-                },
-              ]}
-              layout={darkThemeLayout("Pie Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
-            />
-          </div>
-        </div>
-        <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 4</h2>
-          <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  z: [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
-                  type: "heatmap",
-                  colorscale: "Viridis",
-                },
-              ]}
-              layout={darkThemeLayout("Heatmap")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
-            />
+          <Plot
+  data={[
+    {
+      type: "treemap",
+      labels: courseCodes,
+      values: cbsScores,
+      parents: Array(courseCodes.length).fill(""),
+      textinfo: "label+value",
+      texttemplate: "%{label}<br>%{value:.2f}", // Round values to 2 decimal places
+      marker: { colors: cbsScores, colorscale: "Blues" },
+    },
+  ]}
+  layout={darkThemeLayout("Top-30 Courses with High CBS")}
+  style={{ width: "100%", height: "100%" }}
+  config={plotConfig}
+  useResizeHandler
+  className="plotly-graph"
+  divId="plotly-treemap"
+/>
+
           </div>
         </div>
       </div>
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 5</h2>
+          <h2 style={h2Styles}>CBS Score vs. Course Code</h2>
           <div style={chartContentStyles}>
             <Plot
               data={[
                 {
-                  type: "scatter3d",
+                  x: courseCodes,
+                  y: cbsScores,
+                  type: "scatter",
                   mode: "markers",
-                  x: [1, 2, 3, 4],
-                  y: [5, 6, 7, 8],
-                  z: [9, 10, 11, 12],
-                  marker: { color: "rgb(23, 190, 207)", size: 12 },
+                  marker: { color: "#ffa500", size: 10 },
                 },
               ]}
-              layout={darkThemeLayout("3D Scatter Plot")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              layout={darkThemeLayout("Scatter Plot of CBS Score vs. Course Code")}
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
-              divId="plotly-graph"
+              divId="plotly-scatter"
             />
           </div>
         </div>
@@ -237,4 +223,4 @@ const Page3 = () => {
   );
 }
 
-export default Page3
+export default Page3;
