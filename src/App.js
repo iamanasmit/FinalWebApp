@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Course from './course.js'; 
+import Opt from './opt.js';
 import React from 'react';
 
 function App() {
@@ -8,8 +8,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <h1>Course Registrations Over the Years</h1>
-        <Course /> {}
+        <h1>Optimization Courses Over the Years</h1>
+        <Opt /> {}
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
