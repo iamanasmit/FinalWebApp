@@ -167,27 +167,31 @@ const Page3 = () => {
             />
           </div>
         </div>
+      </div>
+      <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Top-30 Courses Treemap</h2>
+          <h2 style={h2Styles}>CBS Score vs. Course Code</h2>
           <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  type: "treemap",
-                  labels: courseCodes,
-                  values: cbsScores,
-                  parents: Array(courseCodes.length).fill(""),
-                  textinfo: "label+value",
-                  marker: { colors: cbsScores, colorscale: "Blues" },
-                },
-              ]}
-              layout={darkThemeLayout("Top-30 Courses with High CBS")}
-              style={{ width: "100%", height: "100%" }}
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-treemap"
-            />
+          <Plot
+  data={[
+    {
+      type: "treemap",
+      labels: courseCodes,
+      values: cbsScores,
+      parents: Array(courseCodes.length).fill(""),
+      textinfo: "label+value",
+      texttemplate: "%{label}<br>%{value:.2f}", // Round values to 2 decimal places
+      marker: { colors: cbsScores, colorscale: "Blues" },
+    },
+  ]}
+  layout={darkThemeLayout("Top-30 Courses with High CBS")}
+  style={{ width: "100%", height: "100%" }}
+  config={plotConfig}
+  useResizeHandler
+  className="plotly-graph"
+  divId="plotly-treemap"
+/>
+
           </div>
         </div>
       </div>
