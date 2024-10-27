@@ -45,7 +45,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Percentage_APs_2020.json") // Adjust this path to your file location
+    fetch("Percentage_APs_2020.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData(jsonData);
@@ -57,7 +57,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Percentage_APs_2021.json") // Adjust this path to your file location
+    fetch("Percentage_APs_2021.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData1(jsonData);
@@ -69,7 +69,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Percentage_APs_2022.json") // Adjust this path to your file location
+    fetch("Percentage_APs_2022.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData2(jsonData);
@@ -81,7 +81,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Load the JSON file with course codes and average grades
-    fetch("src\\pages\\data\\Percentage_APs_2023.json") // Adjust this path to your file location
+    fetch("Percentage_APs_2023.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
         setData3(jsonData);
@@ -190,7 +190,7 @@ const Dashboard = () => {
 
   return (
     <div style={dashboardStyles}>
-      <h1 style={titleStyles}>Test Page</h1>
+      <h1 style={titleStyles}>Grading Related Projects</h1>
 
       {/* Percent APs given by department */}
       <div style={chartsSectionStyles}>
@@ -254,7 +254,7 @@ const Dashboard = () => {
                   },
                 },
               ]}
-              layout={darkThemeLayout("Pie Chart")}
+              layout={darkThemeLayout("Yearwise grading stats")}
               style={{ width: "100%", height: "100%" }} // Fill container
               config={plotConfig}
               useResizeHandler

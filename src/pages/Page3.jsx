@@ -23,11 +23,14 @@ const Page3 = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+  const [graphSize, setGraphSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("src\\pages\\data\\good_grading_courses.json")
+    fetch("good_grading_courses.json")
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.error("Error fetching JSON data:", error));
@@ -128,16 +131,36 @@ const Page3 = () => {
 
   // Component to explain CBS calculation
   const CBSSummary = () => (
-    <div style={{ color: "#ffffff", margin: "20px 0", padding: "20px", backgroundColor: "#2b2a3a", borderRadius: "10px" }}>
+    <div
+      style={{
+        color: "#ffffff",
+        margin: "20px 0",
+        padding: "20px",
+        backgroundColor: "#2b2a3a",
+        borderRadius: "10px",
+      }}
+    >
       <h2>What is CBS?</h2>
       <p>
-        CBS (CPI Booster Score) is a metric designed to help identify courses that have a higher potential to improve a student's CPI (Cumulative Performance Index).
-        It considers multiple factors:
+        CBS (CPI Booster Score) is a metric designed to help identify courses
+        that have a higher potential to improve a student's CPI (Cumulative
+        Performance Index). It considers multiple factors:
       </p>
       <ul>
-        <li><strong>Grade Distribution:</strong> Courses with more high grades (APs, AAs, ABs) receive higher CBS scores.</li>
-        <li><strong>Enrollment Numbers:</strong> Courses with higher enrollment have reduced score penalties, as they offer more reliable grade distributions.</li>
-        <li><strong>Weighted Average by Semester:</strong> Recent semesters contribute more to CBS than older semesters, ensuring the score reflects current grading trends.</li>
+        <li>
+          <strong>Grade Distribution:</strong> Courses with more high grades
+          (APs, AAs, ABs) receive higher CBS scores.
+        </li>
+        <li>
+          <strong>Enrollment Numbers:</strong> Courses with higher enrollment
+          have reduced score penalties, as they offer more reliable grade
+          distributions.
+        </li>
+        <li>
+          <strong>Weighted Average by Semester:</strong> Recent semesters
+          contribute more to CBS than older semesters, ensuring the score
+          reflects current grading trends.
+        </li>
       </ul>
     </div>
   );
@@ -172,26 +195,28 @@ const Page3 = () => {
         <div style={cardStyles}>
           <h2 style={h2Styles}>CBS Score vs. Course Code</h2>
           <div style={chartContentStyles}>
-          <Plot
-  data={[
-    {
-      type: "treemap",
-      labels: courseCodes,
-      values: cbsScores,
-      parents: Array(courseCodes.length).fill(""),
-      textinfo: "label+value",
-      texttemplate: "%{label}<br>%{value:.2f}", // Round values to 2 decimal places
-      marker: { colors: cbsScores, colorscale: "Blues" },
-    },
-  ]}
-  layout={darkThemeLayout("Top-30 Courses with High CBS")}
-  style={{ width: "100%", height: "100%" }}
-  config={plotConfig}
-  useResizeHandler
-  className="plotly-graph"
-  divId="plotly-treemap"
-/>
-
+            <Plot
+              data={[
+                {
+                  type: "treemap",
+                  labels: courseCodes,
+                  values: cbsScores,
+                  parents: Array(courseCodes.length).fill(""),
+                  textinfo: "label+value",
+                  texttemplate: "%{label}<br>%{value:.2f}", // Round values to 2 decimal places
+                  marker: {
+                    colors: cbsScores,
+                    colorscale: "Viridis", // You can choose from different colorscales like 'Viridis', 'Rainbow', etc.
+                  },
+                },
+              ]}
+              layout={darkThemeLayout("Top-30 Courses with High CBS")}
+              style={{ width: "100%", height: "100%" }}
+              config={plotConfig}
+              useResizeHandler
+              className="plotly-graph"
+              divId="plotly-treemap"
+            />
           </div>
         </div>
       </div>
@@ -209,7 +234,9 @@ const Page3 = () => {
                   marker: { color: "#ffa500", size: 10 },
                 },
               ]}
-              layout={darkThemeLayout("Scatter Plot of CBS Score vs. Course Code")}
+              layout={darkThemeLayout(
+                "Scatter Plot of CBS Score vs. Course Code"
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -221,6 +248,6 @@ const Page3 = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Page3;
