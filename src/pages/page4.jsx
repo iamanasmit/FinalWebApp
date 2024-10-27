@@ -76,6 +76,15 @@ const advancedData = [
     2023: 251.0,
   },
 ];
+
+const logoStyles = {
+  position: "fixed",
+  top: "20px",
+  right: "20px",
+  zIndex: 1000,
+  width: "50px",
+  height: "50px",
+};
 const Page4 = () => {
   const [dataML, setDataML] = useState([]);
   const [dataAdvanced, setDataAdvanced] = useState([]);
@@ -395,26 +404,11 @@ const Page4 = () => {
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>AI/ML and Optimization courses</h1>
+      <img src="src/pages/logo.png" alt="AI" style={logoStyles} />
       <div style={chartsSectionStyles}>
         <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Basic ML courses vs Registration over years</h2>
           <div style={chartContentStyles}>
-            {/* <Plot
-              data={[
-                {
-                  x: ["Apples", "Bananas", "Cherries"],
-                  y: [10, 20, 30],
-                  type: "bar",
-                  marker: { color: "#00aaff" },
-                },
-              ]}
-              layout={darkThemeLayout("Bar Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph-2"
-            /> */}
             <Plot
               data={basicChartData}
               layout={darkThemeLayout(
@@ -428,9 +422,9 @@ const Page4 = () => {
             />
           </div>
           {/* Insight Section */}
-          {/* <div style={insightSectionStyles}>
+          <div style={insightSectionStyles}>
             <p style={insightTextStyles}>{graphInsights.graph1}</p>
-          </div> */}
+          </div>
         </div>
 
         <div style={cardStyles} data-aos="flip-up">
@@ -451,9 +445,9 @@ const Page4 = () => {
             />
           </div>
           {/* Insight Section */}
-          {/* <div style={insightSectionStyles}>
+          <div style={insightSectionStyles}>
             <p style={insightTextStyles}>{graphInsights.graph2}</p>
-          </div> */}
+          </div>
         </div>
       </div>
 
@@ -461,24 +455,6 @@ const Page4 = () => {
         <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Optimization Courses VS Registrations Over Years</h2>
           <div style={chartContentStyles}>
-            {/* <Plot
-              data={[
-                {
-                  labels: ["Red", "Blue", "Green"],
-                  values: [10, 20, 30],
-                  type: "pie",
-                  marker: {
-                    colors: ["#ff6347", "#1e90ff", "#32cd32"],
-                  },
-                },
-              ]}
-              layout={darkThemeLayout("Pie Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph-3"
-            /> */}
             <Plot
               data={plotDataReg}
               layout={darkThemeLayout("Optimization Courses vs Registraions over years")}
@@ -490,33 +466,14 @@ const Page4 = () => {
             />
           </div>
           {/* Insight Section */}
-          {/* <div style={insightSectionStyles}>
+          <div style={insightSectionStyles}>
             <p style={insightTextStyles}>{graphInsights.graph3}</p>
-          </div> */}
+          </div>
         </div>
 
         <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Optimization Courses VS Grades Over Years</h2>
           <div style={chartContentStyles}>
-            {/* <Plot
-              data={[
-                {
-                  z: [
-                    [1, 20, 30],
-                    [20, 1, 60],
-                    [30, 60, 1],
-                  ],
-                  type: "heatmap",
-                  colorscale: "Viridis",
-                },
-              ]}
-              layout={darkThemeLayout("Heatmap")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph-4"
-            /> */}
             <Plot
           data={plotDataGrade}
           layout={darkThemeLayout("Optimization Courses vs Grades over years")}
@@ -528,9 +485,9 @@ const Page4 = () => {
         />
           </div>
           {/* Insight Section */}
-          {/* <div style={insightSectionStyles}>
+          <div style={insightSectionStyles}>
             <p style={insightTextStyles}>{graphInsights.graph4}</p>
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

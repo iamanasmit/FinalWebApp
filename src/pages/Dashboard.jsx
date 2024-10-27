@@ -24,27 +24,20 @@ const Dashboard = () => {
   }, []);
 
   const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
-
-  const dashboardStyles = {
-    background: "linear-gradient(135deg, #1f1c2c, #928dab)",
-    color: "#ffffff",
-    padding: "20px",
-    fontFamily: "Arial, sans-serif",
-    height: "100vh",
-    width: "100vw",
-    boxSizing: "border-box",
-    overflowX: "hidden",
-    position: "relative",
-  };
-
   const [data, setData] = useState([]);
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
   const [selectedYear, setSelectedYear] = useState("2020");
 
+  const [insightVisibility, setInsightVisibility] = useState({
+    graph1: false,
+    graph2: false,
+    graph3: false,
+    graph4: false,
+  });
+
   useEffect(() => {
-    // Load the JSON file with course codes and average grades
     fetch("Percentage_APs_2020.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
@@ -56,7 +49,6 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    // Load the JSON file with course codes and average grades
     fetch("Percentage_APs_2021.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
@@ -68,7 +60,6 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    // Load the JSON file with course codes and average grades
     fetch("Percentage_APs_2022.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
@@ -80,7 +71,6 @@ const Dashboard = () => {
   }, []);
 
   useEffect(() => {
-    // Load the JSON file with course codes and average grades
     fetch("Percentage_APs_2023.json") // Adjust this path to your file location
       .then((response) => response.json())
       .then((jsonData) => {
@@ -106,8 +96,36 @@ const Dashboard = () => {
     }
   };
 
+  const logoStyles = {
+    position: "fixed",
+    top: "20px",
+    right: "20px",
+    zIndex: 1000,
+    width: "50px",
+    height: "50px",
+  };
+
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
+  };
+
+  const toggleInsights = (graph) => {
+    setInsightVisibility((prevState) => ({
+      ...prevState,
+      [graph]: !prevState[graph],
+    }));
+  };
+
+  const dashboardStyles = {
+    background: "linear-gradient(135deg, #1f1c2c, #928dab)",
+    color: "#ffffff",
+    padding: "20px",
+    fontFamily: "Arial, sans-serif",
+    height: "100vh",
+    width: "100vw",
+    boxSizing: "border-box",
+    overflowX: "hidden",
+    position: "relative",
   };
 
   const titleStyles = {
@@ -129,6 +147,7 @@ const Dashboard = () => {
     flexDirection: "column",
     justifyContent: "space-between",
     minWidth: "200px",
+    transition: "transform 0.3s, box-shadow 0.3s",
   };
 
   const chartsSectionStyles = {
@@ -151,12 +170,18 @@ const Dashboard = () => {
     flex: 1,
   };
 
+  const insightsSectionStyles = {
+    marginTop: "10px",
+    backgroundColor: "#2b2a3a",
+    padding: "10px",
+    borderRadius: "5px",
+  };
+
   const h2Styles = {
     textAlign: "center",
     margin: "0",
   };
 
-  // Dark theme layout for Plotly
   const darkThemeLayout = (title) => ({
     title: {
       text: title,
@@ -164,41 +189,46 @@ const Dashboard = () => {
         color: "#ffffff",
       },
     },
-    paper_bgcolor: "#1c1b29", // Background color of the entire chart
-    plot_bgcolor: "#2b2a3a", // Background color of the plot
+    paper_bgcolor: "#1c1b29",
+    plot_bgcolor: "#2b2a3a",
     font: {
-      color: "#ffffff", // Default text color
+      color: "#ffffff",
     },
     xaxis: {
-      color: "#ffffff", // Axis labels color
+      color: "#ffffff",
       tickcolor: "#ffffff",
-      gridcolor: "#444444", // Gridline color for a subtle contrast
+      gridcolor: "#444444",
     },
     yaxis: {
       color: "#ffffff",
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
-    autosize: true,  // Enable autosize to allow Plotly to adapt to container
+    autosize: true,
   });
 
   const plotConfig = {
-    scrollZoom: false,       // Disables scrolling to zoom
-    displayModeBar: false,   // Hides the mode bar (optional)
-    editable: false,         // Disables any edits like dragging, zooming, etc.
+    scrollZoom: false,
+    displayModeBar: false,
+    editable: false,
   };
 
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Grading Related Projects</h1>
+      <img src="src/pages/logo.png" alt="Data Analysis and Visualization Team Logo" style={logoStyles} />
 
       {/* Percent APs given by department */}
+
       <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
+        <div
+          style={cardStyles}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
           <h2 style={h2Styles}>Percentage APs given by Department</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
-            {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedYear}
               onChange={handleYearChange}
               style={{
@@ -219,15 +249,13 @@ const Dashboard = () => {
             </select>
 
             <Plot
-              data={[
-                {
-                  x: getGraphDepts().map(d => d['X']),
-                  y: getGraphDepts().map(d => d['Y']),
-                  type: "bar",
-                  mode: "markers",
-                  marker: { color: "rgb(23, 190, 207)", size: 12 },
-                },
-              ]}
+              data={[{
+                x: getGraphDepts().map((d) => d["X"]),
+                y: getGraphDepts().map((d) => d["Y"]),
+                type: "bar",
+                mode: "markers",
+                marker: { color: "rgb(23, 190, 207)", size: 12 },
+              }]}
               layout={darkThemeLayout(`Average Grades by Department for ${selectedYear}`)}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
@@ -235,81 +263,153 @@ const Dashboard = () => {
               className="plotly-graph"
               divId="plotly-graph"
             />
+
+            <button onClick={() => toggleInsights("graph1")} style={{ marginTop: "10px", backgroundColor: "#1e90ff", color: "#fff", padding: "10px", border: "none", borderRadius: "5px" }}>
+              {insightVisibility.graph1 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph1 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  This bar chart illustrates the percentage of APs awarded across different departments for the year {selectedYear}. 
+                  High percentages indicate departments where students have achieved notable performance, 
+                  while lower percentages may highlight areas for improvement.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
+
+        {/* Graph 2 */}
+        <div
+          style={cardStyles}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
           <h2 style={h2Styles}>Yearwise grading stats</h2>
-          <div style={chartContentStyles}>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             <Plot
-              data={[
-                {
-                  x: ["2020", "2021", "2022", "2023"],
-                  y: [8.2186824115, 7.9254884772, 7.9042077959, 7.8633442403],
-                  type: "bar",
-                  marker: {
-                    colors: ["#ff6347", "#1e90ff", "#32cd32"],
-                  },
+              data={[{
+                x: ["2020", "2021", "2022", "2023"],
+                y: [8.2186824115, 7.9254884772, 7.9042077959, 7.8633442403],
+                type: "bar",
+                marker: {
+                  colors: ["#ff6347", "#1e90ff", "#32cd32"],
                 },
-              ]}
+              }]}
               layout={darkThemeLayout("Yearwise grading stats")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
               divId="plotly-graph"
             />
+
+            <button onClick={() => toggleInsights("graph2")} style={{ marginTop: "10px", backgroundColor: "#1e90ff", color: "#fff", padding: "10px", border: "none", borderRadius: "5px" }}>
+              {insightVisibility.graph2 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph2 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  The yearwise grading stats show the average grades over the years from 2020 to 2023. 
+                  A declining trend may indicate challenges faced by students in recent years or changes in grading standards.
+                </p>
+              </div>
+            )}
           </div>
         </div>
-        <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 4</h2>
-          <div style={chartContentStyles}>
+
+        {/* Graph 3 */}
+        <div
+          style={cardStyles}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
+          <h2 style={h2Styles}>Graph 3</h2>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             <Plot
-              data={[
-                {
-                  z: [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
-                  type: "heatmap",
-                  colorscale: "Viridis",
-                },
-              ]}
+              data={[{
+                z: [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
+                type: "heatmap",
+                colorscale: "Viridis",
+              }]}
               layout={darkThemeLayout("Heatmap")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
               divId="plotly-graph"
             />
+
+            <button onClick={() => toggleInsights("graph3")} style={{ marginTop: "10px", backgroundColor: "#1e90ff", color: "#fff", padding: "10px", border: "none", borderRadius: "5px" }}>
+              {insightVisibility.graph3 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph3 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  The heatmap provides a visual representation of the relationships between different variables, 
+                  highlighting areas of high concentration and potential correlations.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
       <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 5</h2>
-          <div style={chartContentStyles}>
+
+        {/* Graph 4 */}
+        <div
+          style={cardStyles}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        >
+          <h2 style={h2Styles}>Graph 4</h2>
+          <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             <Plot
-              data={[
-                {
-                  type: "scatter3d",
-                  mode: "markers",
-                  x: [1, 2, 3, 4],
-                  y: [5, 6, 7, 8],
-                  z: [9, 10, 11, 12],
-                  marker: { color: "rgb(23, 190, 207)", size: 12 },
-                },
-              ]}
+              data={[{
+                type: "scatter3d",
+                mode: "markers",
+                x: [1, 2, 3, 4],
+                y: [5, 6, 7, 8],
+                z: [9, 10, 11, 12],
+                marker: { color: "rgb(23, 190, 207)", size: 12 },
+              }]}
               layout={darkThemeLayout("3D Scatter Plot")}
-              style={{ width: "100%", height: "100%" }} // Fill container
+              style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
               divId="plotly-graph"
             />
+
+            <button onClick={() => toggleInsights("graph4")} style={{ marginTop: "10px", backgroundColor: "#1e90ff", color: "#fff", padding: "10px", border: "none", borderRadius: "5px" }}>
+              {insightVisibility.graph4 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph4 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  The 3D scatter plot visualizes the relationship between three variables, offering a comprehensive view 
+                  of the data distribution in three-dimensional space.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
+
+    
   );
 };
 

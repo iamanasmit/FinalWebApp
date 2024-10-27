@@ -11,7 +11,8 @@ const HomePage = () => {
     <div
       className="d-flex flex-column justify-content-center align-items-center"
       style={{
-        background: "linear-gradient(135deg, #1f1c2c, #3b0a45, #a24d90, #f4e041)",
+        background:
+          "linear-gradient(135deg, #1f1c2c, #3b0a45, #a24d90, #f4e041)",
         color: "#ffffff",
         padding: "40px 20px",
         height: "100vh",
@@ -79,7 +80,9 @@ const HomePage = () => {
           fontFamily: "roboto",
         }}
       >
-        Explore detailed statistics and trends across various IIT Bombay courses. From AI-ML to optimization, our team provides in-depth analysis for enhanced academic transparency.
+        Explore detailed statistics and trends across various IIT Bombay
+        courses. From AI-ML to optimization, our team provides in-depth analysis
+        for enhanced academic transparency.
       </motion.p>
 
       {/* Navigation Links */}
@@ -97,7 +100,10 @@ const HomePage = () => {
         <ul className="list-unstyled w-100">
           {[
             { to: "/generic-overview", text: "Generic Overview Page" },
-            { to: "/grading-related-projects", text: "Grading related projects" },
+            {
+              to: "/grading-related-projects",
+              text: "Grading related projects",
+            },
             { to: "/test-page", text: "Test Page" },
             { to: "/good-grading-courses", text: "Good Grading Courses" },
             { to: "/ai-ml-optimization", text: "AI/ML or Optimization" },
@@ -108,11 +114,12 @@ const HomePage = () => {
                 className="d-block text-decoration-none py-3 px-4 text-center"
                 style={{
                   color: "#81d4fa",
-                  fontSize: "22px",
+                  fontSize: "20px", // Adjusted font size for a more formal look
                   borderRadius: "12px",
                   backgroundColor: "#333",
                   transition: "all 0.3s ease",
                   boxShadow: `0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(81, 175, 234, 0.3), 0 0 10px rgba(255, 82, 82, 0.4)`,
+                  fontFamily: "Georgia, serif", // Changed font family to a more formal one
                 }}
                 onMouseOver={(e) => {
                   e.target.style.backgroundColor = "#29b6f6";
