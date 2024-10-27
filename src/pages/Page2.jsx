@@ -43,7 +43,10 @@ const Page2 = () => {
     overflowX: "hidden",
     position: "relative",
   };
+  
+  
 
+  
   const titleStyles = {
     fontSize: "24px",
     marginBottom: "20px",
@@ -133,7 +136,14 @@ const Page2 = () => {
     textAlign: "center",
     margin: "0",
   };
-
+  const logoStyles = {
+    position: "fixed",
+    top: "20px",
+    right: "20px",
+    zIndex: 1000,
+    width: "50px",
+    height: "50px",
+  };
   const darkThemeLayout = (title) => ({
     title: {
       text: title,
@@ -187,6 +197,7 @@ const Page2 = () => {
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Test Page</h1>
+      <img src='src/pages/logo.png' alt="Data Analysis and Visualization Team Logo" style={logoStyles} />
       <div style={chartsSectionStyles}>
         <motion.div 
           style={cardStyles}
@@ -335,3 +346,5 @@ const Page2 = () => {
 }
 
 export default Page2;
+
+

@@ -237,6 +237,7 @@ const Page4 = () => {
     overflowX: "hidden",
     position: "relative",
   };
+  
 
   const titleStyles = {
     fontSize: "24px",

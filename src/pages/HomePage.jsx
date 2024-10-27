@@ -11,7 +11,7 @@ const HomePage = () => {
     <div
       className="d-flex flex-column justify-content-center align-items-center"
       style={{
-        background: "linear-gradient(135deg, #1f1c2c, #928dab)",
+        background: "linear-gradient(135deg, #1f1c2c, #3b0a45, #a24d90, #f4e041)",
         color: "#ffffff",
         padding: "40px 20px",
         height: "100vh",
@@ -76,6 +76,7 @@ const HomePage = () => {
           lineHeight: "1.6",
           textAlign: "center",
           fontSize: "1.2rem",
+          fontFamily: "roboto",
         }}
       >
         Explore detailed statistics and trends across various IIT Bombay courses. From AI-ML to optimization, our team provides in-depth analysis for enhanced academic transparency.
@@ -99,7 +100,7 @@ const HomePage = () => {
             { to: "/grading-related-projects", text: "Grading related projects" },
             { to: "/test-page", text: "Test Page" },
             { to: "/good-grading-courses", text: "Good Grading Courses" },
-            { to: "/ai-ml-optimization", text: "AI/ML  or Optimization" },
+            { to: "/ai-ml-optimization", text: "AI/ML or Optimization" },
           ].map((item, index) => (
             <li key={index} className="mb-3">
               <Link

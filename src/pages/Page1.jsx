@@ -108,6 +108,16 @@ const Page1 = () => {
     overflowX: "hidden",
     position: "relative",
   };
+  
+
+  const logoStyles = {
+    position: "fixed",
+    top: "20px",
+    right: "20px",
+    zIndex: 1000,
+    width: "50px",
+    height: "50px",
+  };
 
   const titleStyles = {
     fontSize: "24px",
@@ -1010,7 +1020,8 @@ useEffect(() => {
 
   return (
     <div style={dashboardStyles}>
-      <h1 style={titleStyles}>Test Page</h1>
+      <h1 style={titleStyles}>Generic Overview Page</h1>
+      <img src='src/pages/logo.png' style={logoStyles} />
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
           <h2 style={h2Styles}>Average Grades by Department</h2>
