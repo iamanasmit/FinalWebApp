@@ -182,7 +182,7 @@ const Dashboard = () => {
     margin: "0",
   };
 
-  const darkThemeLayout = (title) => ({
+  const darkThemeLayout = (title, xLabel = "", yLabel = "") => ({
     title: {
       text: title,
       font: {
@@ -195,17 +195,30 @@ const Dashboard = () => {
       color: "#ffffff",
     },
     xaxis: {
+      title: {
+        text: xLabel,
+        font: {
+          color: "#ffffff",
+        },
+      },
       color: "#ffffff",
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
     yaxis: {
+      title: {
+        text: yLabel,
+        font: {
+          color: "#ffffff",
+        },
+      },
       color: "#ffffff",
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
     autosize: true,
   });
+  
 
   const plotConfig = {
     scrollZoom: false,
@@ -256,7 +269,7 @@ const Dashboard = () => {
                 mode: "markers",
                 marker: { color: "rgb(23, 190, 207)", size: 12 },
               }]}
-              layout={darkThemeLayout(`Average Grades by Department for ${selectedYear}`)}
+              layout={darkThemeLayout(`Average Grades by Department for ${selectedYear}`, "Department", "Average Grade")}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -301,7 +314,7 @@ const Dashboard = () => {
                   colors: ["#ff6347", "#1e90ff", "#32cd32"],
                 },
               }]}
-              layout={darkThemeLayout("Yearwise grading stats")}
+              layout={darkThemeLayout("Yearwise grading stats", "Year", "Average Grade")}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler

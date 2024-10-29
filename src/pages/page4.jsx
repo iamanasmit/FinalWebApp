@@ -246,7 +246,6 @@ const Page4 = () => {
     overflowX: "hidden",
     position: "relative",
   };
-  
 
   const titleStyles = {
     fontSize: "24px",
@@ -290,19 +289,27 @@ const Page4 = () => {
     flex: 1,
   };
 
-  const insightSectionStyles = {
-    backgroundColor: "#2c2b4f",
-    padding: "15px",
-    borderRadius: "8px",
-    marginTop: "10px",
-    textAlign: "center",
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+  const [insightVisibility, setInsightVisibility] = useState({
+    graph1: false,
+    graph2: false,
+    graph3: false,
+    graph4: false,
+    graph5: false,
+    graph6: false,
+  });
+
+  const toggleInsights = (graph) => {
+    setInsightVisibility((prevState) => ({
+      ...prevState,
+      [graph]: !prevState[graph],
+    }));
   };
 
-  const insightTextStyles = {
-    color: "#ffcc00",
-    fontSize: "16px",
-    margin: 0,
+  const insightsSectionStyles = {
+    marginTop: "10px",
+    backgroundColor: "#2b2a3a",
+    padding: "10px",
+    borderRadius: "5px",
   };
 
   const h2Styles = {
@@ -311,48 +318,47 @@ const Page4 = () => {
   };
 
   // Dark theme layout for Plotly
-  const darkThemeLayout = (title) => ({
+  const darkThemeLayout = (title, xLabel = "", yLabel = "") => ({
     title: {
       text: title,
       font: {
         color: "#ffffff",
       },
     },
-    paper_bgcolor: "#1c1b29", // Background color of the entire chart
-    plot_bgcolor: "#2b2a3a", // Background color of the plot
+    paper_bgcolor: "#1c1b29",
+    plot_bgcolor: "#2b2a3a",
     font: {
-      color: "#ffffff", // Default text color
+      color: "#ffffff",
     },
     xaxis: {
-      color: "#ffffff", // Axis labels color
-      tickcolor: "#ffffff",
-      gridcolor: "#444444", // Gridline color for a subtle contrast
-    },
-    yaxis: {
+      title: {
+        text: xLabel,
+        font: {
+          color: "#ffffff",
+        },
+      },
       color: "#ffffff",
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
-    autosize: true, // Enable autosize to allow Plotly to adapt to container
+    yaxis: {
+      title: {
+        text: yLabel,
+        font: {
+          color: "#ffffff",
+        },
+      },
+      color: "#ffffff",
+      tickcolor: "#ffffff",
+      gridcolor: "#444444",
+    },
+    autosize: true,
   });
 
   const plotConfig = {
     scrollZoom: false, // Disables scrolling to zoom
     displayModeBar: false, // Hides the mode bar (optional)
     editable: false, // Disables any edits like dragging, zooming, etc.
-  };
-
-  const graphInsights = {
-    graph1:
-      "This line chart shows the trend of data over time. The peaks indicate key moments of increase.",
-    graph2:
-      "This bar chart shows categorical data. The highest value is for Bananas, showing strong sales.",
-    graph3:
-      "This pie chart highlights how the values are divided across the categories.",
-    graph4:
-      "This heatmap shows the intensity of the data across a matrix. Darker areas represent higher values.",
-    graph5:
-      "This 3D scatter plot showcases the relationship across three dimensions of data.",
   };
 
   const [dataReg, setDataReg] = useState([]);
@@ -412,7 +418,9 @@ const Page4 = () => {
             <Plot
               data={basicChartData}
               layout={darkThemeLayout(
-                "Basic ML courses vs Registration over years"
+                "Basic ML courses vs Registration over years",
+                "Course Codes",
+                "Scores"
               )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
@@ -422,9 +430,9 @@ const Page4 = () => {
             />
           </div>
           {/* Insight Section */}
-          <div style={insightSectionStyles}>
+          {/* <div style={insightSectionStyles}>
             <p style={insightTextStyles}>{graphInsights.graph1}</p>
-          </div>
+          </div> */}
         </div>
 
         <div style={cardStyles} data-aos="flip-up">
@@ -435,7 +443,9 @@ const Page4 = () => {
             <Plot
               data={advancedChartData}
               layout={darkThemeLayout(
-                "Advanced ML courses vs Registration over years"
+                "Advanced ML courses vs Registration over years",
+                "Course Codes",
+                "Scores"
               )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
@@ -445,19 +455,25 @@ const Page4 = () => {
             />
           </div>
           {/* Insight Section */}
-          <div style={insightSectionStyles}>
+          {/* <div style={insightSectionStyles}>
             <p style={insightTextStyles}>{graphInsights.graph2}</p>
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div style={chartsSectionStyles}>
         <div style={cardStyles} data-aos="flip-up">
-          <h2 style={h2Styles}>Optimization Courses VS Registrations Over Years</h2>
+          <h2 style={h2Styles}>
+            Optimization Courses VS Registrations Over Years
+          </h2>
           <div style={chartContentStyles}>
             <Plot
               data={plotDataReg}
-              layout={darkThemeLayout("Optimization Courses vs Registraions over years")}
+              layout={darkThemeLayout(
+                "Optimization Courses vs Registraions over years",
+                "Course Codes",
+                "Scores"
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -466,28 +482,32 @@ const Page4 = () => {
             />
           </div>
           {/* Insight Section */}
-          <div style={insightSectionStyles}>
+          {/* <div style={insightSectionStyles}>
             <p style={insightTextStyles}>{graphInsights.graph3}</p>
-          </div>
+          </div> */}
         </div>
 
         <div style={cardStyles} data-aos="flip-up">
           <h2 style={h2Styles}>Optimization Courses VS Grades Over Years</h2>
           <div style={chartContentStyles}>
             <Plot
-          data={plotDataGrade}
-          layout={darkThemeLayout("Optimization Courses vs Grades over years")}
-          style={{ width: "100%", height: "100%" }}
-          config={plotConfig}
-          useResizeHandler
-          className="plotly-graph"
-          divId="plotly-graph-4"
-        />
+              data={plotDataGrade}
+              layout={darkThemeLayout(
+                "Optimization Courses vs Grades over years",
+                "Course Codes",
+                "Scores"
+              )}
+              style={{ width: "100%", height: "100%" }}
+              config={plotConfig}
+              useResizeHandler
+              className="plotly-graph"
+              divId="plotly-graph-4"
+            />
           </div>
           {/* Insight Section */}
-          <div style={insightSectionStyles}>
+          {/* <div style={insightSectionStyles}>
             <p style={insightTextStyles}>{graphInsights.graph4}</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

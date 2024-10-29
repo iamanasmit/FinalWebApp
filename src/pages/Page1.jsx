@@ -66,15 +66,38 @@ const Page1 = () => {
   const [data56, setData56] = useState([]);
   const [data57, setData57] = useState([]);
 
-  const [selectedSem,setSelectedSem] = useState("1");
+  const [selectedSem, setSelectedSem] = useState("1");
 
   const [selectedYear1, setSelectedYear1] = useState("2020");
   const [selectedYear3, setSelectedYear3] = useState("2020");
   const [selectedYear4, setSelectedYear4] = useState("2020");
   const [selectedYear5, setSelectedYear5] = useState("2020");
 
-  const [selectedCourse1,setSelectedCourse1] = useState('AE');
-  const [selectedCourse2,setSelectedCourse2] = useState('AE');
+  const [selectedCourse1, setSelectedCourse1] = useState("AE");
+  const [selectedCourse2, setSelectedCourse2] = useState("AE");
+
+  const [insightVisibility, setInsightVisibility] = useState({
+    graph1: false,
+    graph2: false,
+    graph3: false,
+    graph4: false,
+    graph5: false,
+    graph6: false,
+  });
+
+  const toggleInsights = (graph) => {
+    setInsightVisibility((prevState) => ({
+      ...prevState,
+      [graph]: !prevState[graph],
+    }));
+  };
+
+  const insightsSectionStyles = {
+    marginTop: "10px",
+    backgroundColor: "#2b2a3a",
+    padding: "10px",
+    borderRadius: "5px",
+  };
 
   useEffect(() => {
     AOS.init({
@@ -95,7 +118,10 @@ const Page1 = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const [graphSize, setGraphSize] = useState({ width: window.innerWidth, height: window.innerHeight });
+  const [graphSize, setGraphSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
   const dashboardStyles = {
     background: "linear-gradient(135deg, #1f1c2c, #928dab)",
@@ -108,7 +134,6 @@ const Page1 = () => {
     overflowX: "hidden",
     position: "relative",
   };
-  
 
   const logoStyles = {
     position: "fixed",
@@ -405,7 +430,7 @@ const Page1 = () => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_CE.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -417,7 +442,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_CH.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -429,7 +454,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_CL.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -441,7 +466,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_CS.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -453,7 +478,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_DS.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -465,7 +490,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_EC.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -477,7 +502,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_EE.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -489,7 +514,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_EN.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -501,7 +526,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_ES.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -513,7 +538,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_HS.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -525,7 +550,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_DE.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -537,7 +562,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_ME.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -549,7 +574,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_MM.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -561,7 +586,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_PH.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -573,7 +598,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_MA.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -585,7 +610,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_2XX_SC.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -609,7 +634,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_CE.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -621,7 +646,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_CL.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -633,7 +658,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_CS.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -645,7 +670,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_DS.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -657,7 +682,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_EC.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -669,7 +694,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_EE.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -681,7 +706,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_EN.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -693,7 +718,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_ES.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -705,7 +730,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_HS.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -717,7 +742,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_DE.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -729,7 +754,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_ME.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -741,7 +766,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_MM.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -753,7 +778,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_PH.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -765,7 +790,7 @@ useEffect(() => {
       });
   }, []);
 
-useEffect(() => {
+  useEffect(() => {
     // Load the JSON file with course codes and average grades
     fetch("Percent_Grades_3XX_SC.json") // Adjust this path to your file location
       .then((response) => response.json())
@@ -814,35 +839,47 @@ useEffect(() => {
   };
 
   // Dark theme layout for Plotly
-  const darkThemeLayout = (title) => ({
+  const darkThemeLayout = (title, xLabel = "", yLabel = "") => ({
     title: {
       text: title,
       font: {
         color: "#ffffff",
       },
     },
-    paper_bgcolor: "#1c1b29", // Background color of the entire chart
-    plot_bgcolor: "#2b2a3a", // Background color of the plot
+    paper_bgcolor: "#1c1b29",
+    plot_bgcolor: "#2b2a3a",
     font: {
-      color: "#ffffff", // Default text color
+      color: "#ffffff",
     },
     xaxis: {
-      color: "#ffffff", // Axis labels color
-      tickcolor: "#ffffff",
-      gridcolor: "#444444", // Gridline color for a subtle contrast
-    },
-    yaxis: {
+      title: {
+        text: xLabel,
+        font: {
+          color: "#ffffff",
+        },
+      },
       color: "#ffffff",
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
-    autosize: true,  // Enable autosize to allow Plotly to adapt to container
+    yaxis: {
+      title: {
+        text: yLabel,
+        font: {
+          color: "#ffffff",
+        },
+      },
+      color: "#ffffff",
+      tickcolor: "#ffffff",
+      gridcolor: "#444444",
+    },
+    autosize: true,
   });
 
   const plotConfig = {
-    scrollZoom: false,       // Disables scrolling to zoom
-    displayModeBar: false,   // Hides the mode bar (optional)
-    editable: false,         // Disables any edits like dragging, zooming, etc.
+    scrollZoom: false, // Disables scrolling to zoom
+    displayModeBar: false, // Hides the mode bar (optional)
+    editable: false, // Disables any edits like dragging, zooming, etc.
   };
 
   const getGraphDepts = () => {
@@ -919,39 +956,39 @@ useEffect(() => {
   const getGradePercent2XX = () => {
     switch (selectedCourse1) {
       case "AE":
-    return data26;
+        return data26;
       case "CE":
-    return data27;
+        return data27;
       case "CH":
-    return data28;
+        return data28;
       case "CL":
-    return data29;
+        return data29;
       case "CS":
-    return data30;
+        return data30;
       case "DS":
-    return data31;
+        return data31;
       case "EC":
-    return data32;
+        return data32;
       case "EE":
-    return data33;
+        return data33;
       case "EN":
-    return data34;
+        return data34;
       case "ES":
-    return data35;
+        return data35;
       case "HS":
-    return data36;
+        return data36;
       case "DE":
-    return data37;
+        return data37;
       case "ME":
-    return data38;
+        return data38;
       case "MM":
-    return data39;
+        return data39;
       case "PH":
-    return data40;
+        return data40;
       case "MA":
-    return data41;
+        return data41;
       case "SC":
-    return data42;
+        return data42;
       default:
         return [];
     }
@@ -960,35 +997,35 @@ useEffect(() => {
   const getGradePercent3XX = () => {
     switch (selectedCourse2) {
       case "AE":
-    return data43;
+        return data43;
       case "CE":
-    return data44;
+        return data44;
       case "CL":
-    return data45;
+        return data45;
       case "CS":
-    return data46;
+        return data46;
       case "DS":
-    return data47;
+        return data47;
       case "EC":
-    return data48;
+        return data48;
       case "EE":
-    return data49;
+        return data49;
       case "EN":
-    return data50;
+        return data50;
       case "ES":
-    return data51;
+        return data51;
       case "HS":
-    return data52;
+        return data52;
       case "DE":
-    return data53;
+        return data53;
       case "ME":
-    return data54;
+        return data54;
       case "MM":
-    return data55;
+        return data55;
       case "PH":
-    return data56;
+        return data56;
       case "SC":
-    return data57;
+        return data57;
       default:
         return [];
     }
@@ -1021,13 +1058,13 @@ useEffect(() => {
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Generic Overview Page</h1>
-      <img src='src/pages/logo.png' style={logoStyles} />
+      <img src="src/pages/logo.png" style={logoStyles} />
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
           <h2 style={h2Styles}>Average Grades by Department</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedYear1}
               onChange={handleYearChange1}
               style={{
@@ -1050,20 +1087,50 @@ useEffect(() => {
             <Plot
               data={[
                 {
-                  x: getGraphDepts().map(d => d['X']),
-                  y: getGraphDepts().map(d => d['Y']),
+                  x: getGraphDepts().map((d) => d["X"]),
+                  y: getGraphDepts().map((d) => d["Y"]),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(`Average Grades by Department for ${selectedYear1}`)}
+              layout={darkThemeLayout(
+                `Average Grades by Department for ${selectedYear1}`,
+                "Department",
+                "Grade"
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
               divId="plotly-graph"
             />
+
+            <button
+              onClick={() => toggleInsights("graph1")}
+              style={{
+                marginTop: "10px",
+                backgroundColor: "#1e90ff",
+                color: "#fff",
+                padding: "10px",
+                border: "none",
+                borderRadius: "5px",
+              }}
+            >
+              {insightVisibility.graph1 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph1 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo
+                  deleniti eaque excepturi blanditiis non! Asperiores ipsam,
+                  dolorum nulla accusantium nesciunt a veritatis? Nemo provident
+                  perspiciatis eligendi magni voluptatum numquam consequuntur?
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -1073,7 +1140,7 @@ useEffect(() => {
           <h2 style={h2Styles}>Average Grades vs Number of Registrations</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedYear3}
               onChange={handleYearChange3}
               style={{
@@ -1096,20 +1163,50 @@ useEffect(() => {
             <Plot
               data={[
                 {
-                  x: getGraphRegs().map(d => d['X']),
-                  y: getGraphRegs().map(d => d['Y']),
+                  x: getGraphRegs().map((d) => d["X"]),
+                  y: getGraphRegs().map((d) => d["Y"]),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(`Average Grades vs Number of Registrations in ${selectedYear3}`)}
+              layout={darkThemeLayout(
+                `Average Grades vs Number of Registrations in ${selectedYear3}`,
+                "Number of Registrations",
+                "Grade"
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
               divId="plotly-graph"
             />
+
+            <button
+              onClick={() => toggleInsights("graph2")}
+              style={{
+                marginTop: "10px",
+                backgroundColor: "#1e90ff",
+                color: "#fff",
+                padding: "10px",
+                border: "none",
+                borderRadius: "5px",
+              }}
+            >
+              {insightVisibility.graph2 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph2 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Adipisci cumque ex deleniti aut velit amet facere, aliquam
+                  culpa est asperiores, hic recusandae et at aperiam eius autem
+                  a vitae laboriosam.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -1119,7 +1216,7 @@ useEffect(() => {
           <h2 style={h2Styles}>Number of Minor Registrations by Year</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedSem}
               onChange={handleSemChange}
               style={{
@@ -1140,30 +1237,61 @@ useEffect(() => {
             <Plot
               data={[
                 {
-                  x: getGraphRegsMinorsSems().map(d => d['X']),
-                  y: getGraphRegsMinorsSems().map(d => d['Y']),
+                  x: getGraphRegsMinorsSems().map((d) => d["X"]),
+                  y: getGraphRegsMinorsSems().map((d) => d["Y"]),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(`Number of Minor Registrations by Year for Sem:${selectedSem}`)}
+              layout={darkThemeLayout(
+                `Number of Minor Registrations by Year for Sem:${selectedSem}`,
+                "Year",
+                "Number of Registrations"
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
               divId="plotly-graph"
             />
+            <button
+              onClick={() => toggleInsights("graph3")}
+              style={{
+                marginTop: "10px",
+                backgroundColor: "#1e90ff",
+                color: "#fff",
+                padding: "10px",
+                border: "none",
+                borderRadius: "5px",
+              }}
+            >
+              {insightVisibility.graph3 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph3 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Similique dicta, recusandae consectetur nostrum atque qui
+                  sequi non totam voluptas consequatur laborum, harum, assumenda
+                  asperiores iste deserunt error alias ducimus aspernatur!
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Average Grade of 2XX and 3XX Courses by Department</h2>
+          <h2 style={h2Styles}>
+            Average Grade of 2XX and 3XX Courses by Department
+          </h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedYear4}
               onChange={handleYearChange4}
               style={{
@@ -1186,39 +1314,70 @@ useEffect(() => {
             <Plot
               data={[
                 {
-                  x: getAverage2XX().map(d => d['X']),
-                  y: getAverage2XX().map(d => d['Y']),
+                  x: getAverage2XX().map((d) => d["X"]),
+                  y: getAverage2XX().map((d) => d["Y"]),
                   type: "scatter",
                   mode: "lines+markers",
                   marker: { color: "red" },
-                  name: "2XX Courses"
+                  name: "2XX Courses",
                 },
                 {
-                  x: getAverage3XX().map(d => d['X']),
-                  y: getAverage3XX().map(d => d['Y']),
+                  x: getAverage3XX().map((d) => d["X"]),
+                  y: getAverage3XX().map((d) => d["Y"]),
                   type: "scatter",
                   mode: "lines+markers",
                   marker: { color: "blue" },
-                  name: "3XX Courses"
-                }
+                  name: "3XX Courses",
+                },
               ]}
-              layout={darkThemeLayout(`Average Grade of 2XX and 3XX Courses by Department for ${selectedYear4}`)}
+              layout={darkThemeLayout(
+                `Average Grade of 2XX and 3XX Courses by Department for ${selectedYear4}`,
+                "Department",
+                "Average Grade"
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
               divId="plotly-graph"
             />
+            <button
+              onClick={() => toggleInsights("graph4")}
+              style={{
+                marginTop: "10px",
+                backgroundColor: "#1e90ff",
+                color: "#fff",
+                padding: "10px",
+                border: "none",
+                borderRadius: "5px",
+              }}
+            >
+              {insightVisibility.graph4 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph4 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Molestiae adipisci impedit dolores, culpa error, nemo quidem
+                  inventore, animi maiores minus ducimus obcaecati deserunt
+                  corrupti. Ex tempore itaque corrupti sunt nam?
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Grades Distribution by Department for 2XX Courses</h2>
+          <h2 style={h2Styles}>
+            Grades Distribution by Department for 2XX Courses
+          </h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedCourse1}
               onChange={handleCourseChange1}
               style={{
@@ -1254,30 +1413,58 @@ useEffect(() => {
             <Plot
               data={[
                 {
-                  x: getGradePercent2XX().map(d => d['X']),
-                  y: getGradePercent2XX().map(d => d['Y']),
+                  x: getGradePercent2XX().map((d) => d["X"]),
+                  y: getGradePercent2XX().map((d) => d["Y"]),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(`Grade Distribution for 2XX Courses for ${selectedCourse1}`)}
+              layout={darkThemeLayout(
+                `Grade Distribution for 2XX Courses for ${selectedCourse1}`,
+                "Department",
+                "Grade Distribution"
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
               divId="plotly-graph"
             />
+            <button
+              onClick={() => toggleInsights("graph5")}
+              style={{
+                marginTop: "10px",
+                backgroundColor: "#1e90ff",
+                color: "#fff",
+                padding: "10px",
+                border: "none",
+                borderRadius: "5px",
+              }}
+            >
+              {insightVisibility.graph5 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph5 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis blanditiis amet sed rerum tempore placeat, sapiente perferendis consectetur modi possimus fuga id praesentium vero sit incidunt, quo omnis minima quas.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Grades Distribution by Department for 3XX Courses</h2>
+          <h2 style={h2Styles}>
+            Grades Distribution by Department for 3XX Courses
+          </h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
-            <select 
+            <select
               value={selectedCourse2}
               onChange={handleCourseChange2}
               style={{
@@ -1311,25 +1498,52 @@ useEffect(() => {
             <Plot
               data={[
                 {
-                  x: getGradePercent3XX().map(d => d['X']),
-                  y: getGradePercent3XX().map(d => d['Y']),
+                  x: getGradePercent3XX().map((d) => d["X"]),
+                  y: getGradePercent3XX().map((d) => d["Y"]),
                   type: "bar",
                   mode: "markers",
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(`Grade Distribution for 3XX Courses for ${selectedCourse2}`)}
+              layout={darkThemeLayout(
+                `Grade Distribution for 3XX Courses for ${selectedCourse2}`,
+                "Department",
+                "Grade Distribution"
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
               className="plotly-graph"
               divId="plotly-graph"
             />
+
+            <button
+              onClick={() => toggleInsights("graph5")}
+              style={{
+                marginTop: "10px",
+                backgroundColor: "#1e90ff",
+                color: "#fff",
+                padding: "10px",
+                border: "none",
+                borderRadius: "5px",
+              }}
+            >
+              {insightVisibility.graph5 ? "Hide Insights" : "Show Insights"}
+            </button>
+
+            {insightVisibility.graph5 && (
+              <div style={insightsSectionStyles}>
+                <h3>Insights:</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, blanditiis, quidem tenetur possimus minus nemo inventore non natus soluta rerum voluptatum ea vitae ipsam impedit nisi incidunt cupiditate molestias ex.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Page1;

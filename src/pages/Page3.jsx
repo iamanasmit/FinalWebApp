@@ -176,7 +176,7 @@ const Page3 = () => {
     "The scatter plot illustrates the CBS scores for various course codes, providing insights into individual course performance. Points that are notably higher in CBS suggest courses that may yield significant benefits for students aiming to improve their overall academic standing.",
   ];
 
-  const darkThemeLayout = (title) => ({
+  const darkThemeLayout = (title, xLabel = "", yLabel = "") => ({
     title: {
       text: title,
       font: {
@@ -189,17 +189,30 @@ const Page3 = () => {
       color: "#ffffff",
     },
     xaxis: {
+      title: {
+        text: xLabel,
+        font: {
+          color: "#ffffff",
+        },
+      },
       color: "#ffffff",
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
     yaxis: {
+      title: {
+        text: yLabel,
+        font: {
+          color: "#ffffff",
+        },
+      },
       color: "#ffffff",
       tickcolor: "#ffffff",
       gridcolor: "#444444",
     },
     autosize: true,
   });
+  
 
   const plotConfig = {
     scrollZoom: false,
@@ -249,7 +262,7 @@ const Page3 = () => {
                   yaxis: "y",
                 },
               ]}
-              layout={darkThemeLayout("Distribution of CBS Scores")}
+              layout={darkThemeLayout("Distribution of CBS Scores", "CBS Score", "Count")}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -349,7 +362,7 @@ const Page3 = () => {
                 },
               ]}
               layout={darkThemeLayout(
-                "Scatter Plot of CBS Score vs. Course Code"
+                "Scatter Plot of CBS Score vs. Course Code", 
               )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
