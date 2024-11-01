@@ -195,7 +195,7 @@ const Dashboard = () => {
       {/* Percent APs given by department */}
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
-          <h2 style={h2Styles}>Percentage APs given by Department</h2>
+          <h2 style={h2Styles}>Department Wise Percentage APs</h2>
           <div style={{ ...chartContentStyles, flexDirection: "column" }}>
             {/* Dropdown for Year Selection */}
             <select 
@@ -228,7 +228,7 @@ const Dashboard = () => {
                   marker: { color: "rgb(23, 190, 207)", size: 12 },
                 },
               ]}
-              layout={darkThemeLayout(`Average Grades by Department for ${selectedYear}`)}
+              layout={darkThemeLayout(`Percentage APs by Department for ${selectedYear}`)}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -239,75 +239,67 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
-          <h2 style={h2Styles}>Yearwise grading stats</h2>
-          <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  x: ["2020", "2021", "2022", "2023"],
-                  y: [8.2186824115, 7.9254884772, 7.9042077959, 7.8633442403],
-                  type: "bar",
-                  marker: {
-                    colors: ["#ff6347", "#1e90ff", "#32cd32"],
-                  },
+          <div style={chartsSectionStyles}>
+      <div style={cardStyles}>
+        <h2 style={h2Styles}>Year-wise Grading Stats</h2>
+        <div style={chartContentStyles}>
+          <Plot
+            data={[
+              {
+                x: ["2020", "2021", "2022", "2023"],
+                y: [8.2186824115, 7.9254884772, 7.9042077959, 7.8633442403],
+                type: "bar",
+                marker: {
+                  color: ["#ff6347", "#ff6347", "#1e90ff", "#1e90ff"], // Red for first two bars, blue for last two
                 },
-              ]}
-              layout={darkThemeLayout("Pie Chart")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
-            />
-          </div>
-        </div>
-        <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 4</h2>
-          <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  z: [[1, 20, 30], [20, 1, 60], [30, 60, 1]],
-                  type: "heatmap",
-                  colorscale: "Viridis",
-                },
-              ]}
-              layout={darkThemeLayout("Heatmap")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
-            />
-          </div>
+              },
+            ]}
+            layout={darkThemeLayout("Online(Red) vs Offline(Blue)")}
+            style={{ width: "100%", height: "100%" }}
+            config={plotConfig}
+            useResizeHandler
+            className="plotly-graph"
+            divId="plotly-graph"
+          />
         </div>
       </div>
-      <div style={chartsSectionStyles}>
-        <div style={cardStyles}>
-          <h2 style={h2Styles}>Graph 5</h2>
-          <div style={chartContentStyles}>
-            <Plot
-              data={[
-                {
-                  type: "scatter3d",
-                  mode: "markers",
-                  x: [1, 2, 3, 4],
-                  y: [5, 6, 7, 8],
-                  z: [9, 10, 11, 12],
-                  marker: { color: "rgb(23, 190, 207)", size: 12 },
-                },
-              ]}
-              layout={darkThemeLayout("3D Scatter Plot")}
-              style={{ width: "100%", height: "100%" }} // Fill container
-              config={plotConfig}
-              useResizeHandler
-              className="plotly-graph"
-              divId="plotly-graph"
-            />
-          </div>
-        </div>
+
+      <div style={cardStyles}>
+  <h2 style={h2Styles}>Analyzing Bachelor's vs Master's grading</h2>
+  <div style={chartContentStyles}>
+    <Plot
+      data={[
+        {
+          x: [7.0, 15.0, 9.0, 10.0, 12.0, 0.0, 8.0, 14.0, 13.0, 5.0, 20.0, 11.0, 2.0, 4.0, 21.0, 6.0, 18.0, 16.0, 3.0, 17.0, 23.0, 28.0, 50.0, 25.0, 1.0, 30.0, 19.0, 26.0, 22.0, 39.0, 27.0, 34.0, 57.0, 38.0, 41.0, 42.0, 47.0, 24.0, 51.0, 37.0, 29.0, 58.0, 31.0, 35.0, 33.0, 56.0, 44.0, 64.0, 32.0, 40.0, 67.0, 78.0, 49.0, 65.0, 45.0, 62.0, 89.0, 79.0, 55.0, 60.0, 68.0, 36.0, 66.0, 70.0, 61.0, 72.0, 54.0, 95.0, 81.0, 48.0], // X-coordinates for blue dots
+          y: [28, 27, 27, 23, 22, 21, 21, 20, 20, 19, 17, 16, 15, 15, 13, 13, 12, 11, 9, 9, 8, 7, 7, 6, 6, 5, 5, 5, 5, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], // Y-coordinates for blue dots
+          mode: "markers",
+          marker: { color: "red", size: 10 },
+          type: "scatter",
+          name: "Bachelors",
+        },
+        {
+          x: [0.0, 11.0, 10.0, 16.0, 12.0, 8.0, 20.0, 14.0, 13.0, 15.0, 9.0, 26.0, 25.0, 5.0, 18.0, 4.0, 6.0, 17.0, 23.0, 19.0, 21.0, 3.0, 31.0, 7.0, 22.0, 28.0, 2.0, 29.0, 33.0, 50.0, 24.0, 1.0, 42.0, 40.0, 38.0, 30.0, 36.0, 45.0, 37.0, 47.0, 27.0, 48.0, 32.0, 60.0, 51.0, 46.0, 62.0, 39.0, 44.0, 54.0, 35.0, 34.0, 43.0, 76.0, 100.0, 53.0, 52.0, 66.0, 65.0, 70.0, 41.0, 57.0, 64.0, 74.0, 61.0, 95.0, 93.0, 55.0, 85.0], // X-coordinates for red dots
+          y: [58, 33, 30, 30, 28, 28, 26, 24, 23, 22, 22, 21, 21, 20, 20, 19, 19, 18, 16, 15, 15, 14, 13, 12, 11, 10, 10, 9, 8, 8, 7, 7, 7, 6, 6, 6, 6, 5, 5, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1]
+          , // Y-coordinates for red dots
+          mode: "markers",
+          marker: { color: "blue", size: 10 },
+          type: "scatter",
+          name: "Masters",
+        },
+      ]}
+      layout={{
+        ...darkThemeLayout("Scatter plot of percentage of AA and number of courses"),
+        xaxis: { title: "Percentage of students who obtained AA" },  // Add label for x-axis
+        yaxis: { title: "Number of Courses" }   // Add label for y-axis
+      }}
+      style={{ width: "100%", height: "100%" }}
+      config={plotConfig}
+      useResizeHandler
+      className="plotly-graph"
+      divId="plotly-graph"
+    />
+  </div>
+</div>
       </div>
     </div>
   );
