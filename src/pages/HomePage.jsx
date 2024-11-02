@@ -34,6 +34,7 @@ const HomePage = () => {
           marginBottom: "30px",
           marginTop: "300px", // Reduced margin for better positioning
           filter: "brightness(0) invert(1)",
+          objectFit: "contain",
         }}
       />
 
