@@ -229,9 +229,7 @@ const Dashboard = () => {
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Grading Related Projects</h1>
-      <img src="src/pages/logo.png" alt="Data Analysis and Visualization Team Logo" style={logoStyles} />
-
-      {/* Percent APs given by department */}
+      <img src="logo.png" alt="Data Analysis and Visualization Team Logo" style={logoStyles} />
 
       <div style={chartsSectionStyles}>
         <div
@@ -329,12 +327,15 @@ const Dashboard = () => {
             {insightVisibility.graph2 && (
               <div style={insightsSectionStyles}>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum temporibus vel neque. Cum ut quibusdam minus? Tenetur commodi sint aliquam.
+                This graph relates the average grade received by students in various calendar years. As we can see there is a steady decline in average grade received by students across the years. This effect can be attributed to the onset of COVID - 19 pandemic in 2020 which resulted in online classes. Although there is a huge drop in 2021 in comparison to 2020 but we can see this declining trend vanishing as we go to 2022 and 2023, in fact the grades are now almost steady in the past two years.
                 </p>
               </div>
             )}
           </div>
         </div>
+      </div>
+
+      <div style={chartsSectionStyles}>
 
         {/* Graph 3 */}
         <div
@@ -404,13 +405,14 @@ const Dashboard = () => {
             {insightVisibility.graph3 && (
               <div style={insightsSectionStyles}>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa deserunt nulla quo labore, harum odio modi est recusandae hic dolores.
+                The scatter plot shows that bachelor's courses are more widely dispersed than master's courses between 0-60% on the Y-axis. However, in the 0-20% range, there is minimal variation in AA grades between the two. Notably, master's courses tend to score higher than bachelor's courses in the 0-10% range, suggesting that some master's courses (≥5xx) have moderate grading similar to bachelor's courses. The data used for this graph is from AY-2023
                 </p>
               </div>
             )}
           </div>
         </div>
       </div>
+
     </div>
 
     

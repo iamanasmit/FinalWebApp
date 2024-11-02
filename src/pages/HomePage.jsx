@@ -24,7 +24,7 @@ const HomePage = () => {
     >
       {/* Logo with Framer Motion */}
       <motion.img
-        src="src/pages/logo.png"
+        src="logo.png"
         alt="Data Analysis and Visualization Team Logo"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -105,7 +105,6 @@ const HomePage = () => {
               to: "/grading-related-projects",
               text: "Grading related projects",
             },
-            { to: "/test-page", text: "Test Page" },
             { to: "/good-grading-courses", text: "Good Grading Courses" },
             { to: "/ai-ml-optimization", text: "AI/ML or Optimization" },
           ].map((item, index) => (

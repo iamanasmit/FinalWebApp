@@ -212,7 +212,6 @@ const Page3 = () => {
     },
     autosize: true,
   });
-  
 
   const plotConfig = {
     scrollZoom: false,
@@ -242,7 +241,7 @@ const Page3 = () => {
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Good Grading Courses</h1>
       <img
-        src="src/pages/logo.png"
+        src="logo.png"
         alt="Data Analysis and Visualization Team Logo"
         style={logoStyles}
       />
@@ -257,12 +256,16 @@ const Page3 = () => {
                 {
                   x: cbsScores,
                   type: "histogram",
-                  marker: { color: "#ffa500" },
+                  marker: { color: "#00008b" }, // Dark Red
                   xaxis: "x",
                   yaxis: "y",
                 },
               ]}
-              layout={darkThemeLayout("Distribution of CBS Scores", "CBS Score", "Count")}
+              layout={darkThemeLayout(
+                "Distribution of CBS Scores",
+                "CBS Score",
+                "Count"
+              )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}
               useResizeHandler
@@ -362,7 +365,7 @@ const Page3 = () => {
                 },
               ]}
               layout={darkThemeLayout(
-                "Scatter Plot of CBS Score vs. Course Code", 
+                "Scatter Plot of CBS Score vs. Course Code"
               )}
               style={{ width: "100%", height: "100%" }}
               config={plotConfig}

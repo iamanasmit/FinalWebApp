@@ -1058,7 +1058,7 @@ const Page1 = () => {
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>Generic Overview Page</h1>
-      <img src="src/pages/logo.png" style={logoStyles} />
+      <img src="logo.png" style={logoStyles} />
       <div style={chartsSectionStyles}>
         <div style={cardStyles}>
           <h2 style={h2Styles}>Average Grades by Department</h2>
@@ -1122,12 +1122,36 @@ const Page1 = () => {
 
             {insightVisibility.graph1 && (
               <div style={insightsSectionStyles}>
-                <h3>Insights:</h3>
                 <p>
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo
-                  deleniti eaque excepturi blanditiis non! Asperiores ipsam,
-                  dolorum nulla accusantium nesciunt a veritatis? Nemo provident
-                  perspiciatis eligendi magni voluptatum numquam consequuntur?
+                  <ul>
+                    <li>
+                      <strong>Data Overview:</strong> The data categorizes
+                      courses by department and tracks average grades from 2020
+                      to 2023.
+                    </li>
+                    <li>
+                      <strong>2020 Grades:</strong> Average grades were highest
+                      in 2020, likely due to online learning during COVID-19.
+                    </li>
+                    <li>
+                      <strong>Trends:</strong> Major departments (CS, ME, MA,
+                      MM) show a gradual decline in average grades over time.
+                    </li>
+                    <li>
+                      <strong>Standard Deviation:</strong> Most departments have
+                      a standard deviation of around 2, indicating that
+                      professors consider variability in grading.
+                    </li>
+                    <li>
+                      <strong>Data Science Courses:</strong> Average grades for
+                      DS courses significantly dropped in 2022 and 2023 compared
+                      to 2020 and 2021.
+                    </li>
+                    <li>
+                      <strong>Lowest Grades:</strong> The Maths Department
+                      consistently records the lowest average grades each year.
+                    </li>
+                  </ul>
                 </p>
               </div>
             )}
@@ -1198,12 +1222,35 @@ const Page1 = () => {
 
             {insightVisibility.graph2 && (
               <div style={insightsSectionStyles}>
-                <h3>Insights:</h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Adipisci cumque ex deleniti aut velit amet facere, aliquam
-                  culpa est asperiores, hic recusandae et at aperiam eius autem
-                  a vitae laboriosam.
+                  <ul>
+                    <li>
+                      <strong>Data Overview:</strong> The data calculates
+                      average grades based on student registration numbers,
+                      categorized into groups: 0-100, 100-200, 200-300, 300-400,
+                      400-500, 500-600, 600-700, and 700-800.
+                    </li>
+                    <li>
+                      <strong>General Trend:</strong> Average grades declined
+                      from 2020 to 2022, likely due to the transition from
+                      online to offline classes, with a slight increase in 2023.
+                    </li>
+                    <li>
+                      <strong>Registration Impact:</strong> Courses with lower
+                      registrations tend to have slightly higher average grades,
+                      though this is not universal.
+                    </li>
+                    <li>
+                      <strong>Enrollment Growth:</strong> No courses had over
+                      400 students before 2021, indicating an increase in
+                      student intake over time.
+                    </li>
+                    <li>
+                      <strong>Anomaly:</strong> In 2023, courses with 400-500
+                      registrations exhibited notably higher average grades
+                      compared to other groups.
+                    </li>
+                  </ul>
                 </p>
               </div>
             )}
@@ -1255,7 +1302,7 @@ const Page1 = () => {
               className="plotly-graph"
               divId="plotly-graph"
             />
-            <button
+            {/* <button
               onClick={() => toggleInsights("graph3")}
               style={{
                 marginTop: "10px",
@@ -1279,7 +1326,7 @@ const Page1 = () => {
                   asperiores iste deserunt error alias ducimus aspernatur!
                 </p>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
@@ -1449,7 +1496,10 @@ const Page1 = () => {
               <div style={insightsSectionStyles}>
                 <h3>Insights:</h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis blanditiis amet sed rerum tempore placeat, sapiente perferendis consectetur modi possimus fuga id praesentium vero sit incidunt, quo omnis minima quas.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Corporis blanditiis amet sed rerum tempore placeat, sapiente
+                  perferendis consectetur modi possimus fuga id praesentium vero
+                  sit incidunt, quo omnis minima quas.
                 </p>
               </div>
             )}
@@ -1535,7 +1585,10 @@ const Page1 = () => {
               <div style={insightsSectionStyles}>
                 <h3>Insights:</h3>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, blanditiis, quidem tenetur possimus minus nemo inventore non natus soluta rerum voluptatum ea vitae ipsam impedit nisi incidunt cupiditate molestias ex.
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Corporis, blanditiis, quidem tenetur possimus minus nemo
+                  inventore non natus soluta rerum voluptatum ea vitae ipsam
+                  impedit nisi incidunt cupiditate molestias ex.
                 </p>
               </div>
             )}

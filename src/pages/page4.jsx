@@ -410,9 +410,9 @@ const Page4 = () => {
   return (
     <div style={dashboardStyles}>
       <h1 style={titleStyles}>AI/ML and Optimization courses</h1>
-      <img src="src/pages/logo.png" alt="AI" style={logoStyles} />
+      <img src="logo.png" alt="AI" style={logoStyles} />
       <div style={chartsSectionStyles}>
-        <div style={cardStyles} data-aos="flip-up">
+        <div style={cardStyles} >
           <h2 style={h2Styles}>Basic ML courses vs Registration over years</h2>
           <div style={chartContentStyles}>
             <Plot
@@ -435,7 +435,7 @@ const Page4 = () => {
           </div> */}
         </div>
 
-        <div style={cardStyles} data-aos="flip-up">
+        <div style={cardStyles} >
           <h2 style={h2Styles}>
             Advanced ML courses vs Registration over years
           </h2>
@@ -462,7 +462,7 @@ const Page4 = () => {
       </div>
 
       <div style={chartsSectionStyles}>
-        <div style={cardStyles} data-aos="flip-up">
+        <div style={cardStyles} >
           <h2 style={h2Styles}>
             Optimization Courses VS Registrations Over Years
           </h2>
@@ -487,7 +487,7 @@ const Page4 = () => {
           </div> */}
         </div>
 
-        <div style={cardStyles} data-aos="flip-up">
+        <div style={cardStyles} >
           <h2 style={h2Styles}>Optimization Courses VS Grades Over Years</h2>
           <div style={chartContentStyles}>
             <Plot
